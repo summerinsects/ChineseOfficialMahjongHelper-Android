@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:id="@+id/fcl_rl_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp5">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/fcl_rb_cl"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:checked="true"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="点和" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_sd"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="自摸" />
+
+            <CheckBox
+                android:id="@+id/fcl_cb_lt"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:enabled="false"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="绝张" />
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/fcl_btn_input"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp28"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="直接输入" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginHorizontal="@dimen/dp5">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/fcl_cb_or"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:enabled="false"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="杠开" />
+
+            <CheckBox
+                android:id="@+id/fcl_cb_rk"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:enabled="false"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="抢杠" />
+
+            <CheckBox
+                android:id="@+id/fcl_cb_wl"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="海底" />
+        </GridLayout>
+
+        <Button
+            android:id="@+id/fcl_btn_rule"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp28"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="规则说明" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginHorizontal="@dimen/dp5">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp5"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="圈风" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_pwe"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:checked="true"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="东" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_pws"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="南" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_pww"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="西" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_pwn"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="北" />
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/fcl_btn_flw"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp28"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="&#x1f338; &#x00d7; 0" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginHorizontal="@dimen/dp5">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp5"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="门风" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_swe"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:checked="true"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="东" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_sws"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="南" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_sww"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="西" />
+
+            <RadioButton
+                android:id="@+id/fcl_rb_swn"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp28"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="北" />
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/fcl_btn_calc"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp28"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="算　番" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/fcl_sv_res"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dp5"
+        android:fillViewport="true"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

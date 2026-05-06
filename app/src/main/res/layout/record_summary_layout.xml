@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rul_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp35"
+            android:scrollbars="vertical" />
+
+        <Button
+            android:id="@+id/rul_btn_clear"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp14"
+            android:text="清空" />
+
+        <Button
+            android:id="@+id/rul_btn_confirm"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp14"
+            android:text="汇总" />
+
+        <Button
+            android:id="@+id/rul_btn_cancel"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/rul_btn_confirm"
+            android:background="@drawable/btn_square_gray"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp14"
+            android:text="取消" />
+
+        <TextView
+            android:id="@+id/rul_txt_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/rul_btn_cancel"
+            android:gravity="center"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14"
+            android:text="0/0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/rul_txt_cnt"
+            android:layout_alignBaseline="@+id/rul_txt_cnt"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14"
+            android:text="已选择：" />
+    </RelativeLayout>
+
+</LinearLayout>

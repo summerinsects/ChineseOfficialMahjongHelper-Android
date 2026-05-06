@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText,ContentDescription"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:background="@color/theme_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/dpl_txt_gd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:layout_marginTop="@dimen/dp5"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp18" />
+            <TextView
+                android:id="@+id/dpl_txt_cd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:layout_marginBottom="@dimen/dp5"
+                android:gravity="center|end"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp14" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginHorizontal="@dimen/dp5">
+            <ImageButton
+                android:id="@+id/dpl_ib_l"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main" />
+            <Button
+                android:id="@+id/dpl_btn_tg"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:layout_toEndOf="@+id/dpl_ib_l"
+                android:background="@drawable/btn_square_toggle"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp14" />
+            <ImageButton
+                android:id="@+id/dpl_ib_r"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_toEndOf="@+id/dpl_btn_tg"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="180" />
+
+            <Button
+                android:id="@+id/dpl_btn_today"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp14"
+                android:text="返回今天" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp280"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginHorizontal="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp10">
+
+            <LinearLayout
+                android:id="@+id/dpl_ll_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="#fe576e"
+                        android:textSize="@dimen/dp16"
+                        android:text="日" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="一" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="二" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="三" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="四" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="五" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp25"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="#fe576e"
+                        android:textSize="@dimen/dp16"
+                        android:text="六" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_date5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                    <include layout="@layout/date_picker_item_layout" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/dpl_ll_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/dpl_ll_month0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="1月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="2月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="3月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="4月" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_month1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="5月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="6月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="7月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="8月" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_month2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="9月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="10月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="11月" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16"
+                        android:text="12月" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/dpl_ll_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/dpl_ll_year0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_year1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/dpl_ll_year2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp2"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <CheckBox
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp65"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"
+                        android:gravity="center"
+                        android:background="@drawable/btn_square_toggle"
+                        android:button="@null"
+                        android:textColor="@color/text_3"
+                        android:textSize="@dimen/dp16" />
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"/>
+                    <View
+                        android:layout_height="1dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/dp1"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include layout="@layout/dialog_footer2" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/dp40"
+    android:layout_weight="1"
+    android:layout_marginHorizontal="@dimen/dp1">
+
+    <CheckBox
+        android:id="@+id/dpi_cb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_square_toggle"
+        android:button="@null" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/dpi_txt_g"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp22"
+            android:layout_marginHorizontal="@dimen/dp2"
+            android:layout_marginTop="@dimen/dp2"
+            android:gravity="center"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp16" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dpi_txt_c"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp14"
+            android:layout_marginHorizontal="@dimen/dp2"
+            android:layout_marginBottom="@dimen/dp2"
+            android:gravity="center"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp10" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:showDividers="middle"
+    android:divider="#000"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/rbs_txt_fan"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:singleLine="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text_3"
+        android:textSize="@dimen/dp18"
+        android:text="番种表" />
+    <TextView
+        android:id="@+id/rbs_txt_principle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:singleLine="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text_3"
+        android:textSize="@dimen/dp18"
+        android:text="计分原则" />
+    <TextView
+        android:id="@+id/rbs_txt_supplement"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:singleLine="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:textColor="@color/text_3"
+        android:textSize="@dimen/dp18"
+        android:text="相关补充" />
+
+</LinearLayout>

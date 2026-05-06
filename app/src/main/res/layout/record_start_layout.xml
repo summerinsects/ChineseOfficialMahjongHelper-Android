@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText,ContentDescription,LabelFor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/dialog_header" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+            <TextView
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14"
+                android:text="东" />
+            <EditText
+                android:id="@+id/ril_et_name0"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp75"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+
+            <ImageButton
+                android:id="@+id/ril_ib_u0"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginEnd="@dimen/dp35"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/gray_5"
+                android:rotation="90" />
+            <ImageButton
+                android:id="@+id/ril_ib_d0"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="-90" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+            <TextView
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14"
+                android:text="南" />
+            <EditText
+                android:id="@+id/ril_et_name1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp75"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+
+            <ImageButton
+                android:id="@+id/ril_ib_u1"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginEnd="@dimen/dp35"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="90" />
+            <ImageButton
+                android:id="@+id/ril_ib_d1"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="-90" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+            <TextView
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14"
+                android:text="西" />
+            <EditText
+                android:id="@+id/ril_et_name2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp75"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+
+            <ImageButton
+                android:id="@+id/ril_ib_u2"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginEnd="@dimen/dp35"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="90" />
+            <ImageButton
+                android:id="@+id/ril_ib_d2"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="-90" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+            <TextView
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14"
+                android:text="北" />
+            <EditText
+                android:id="@+id/ril_et_name3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp75"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:inputType="text"
+                android:importantForAutofill="no"
+                android:imeOptions="actionNext"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+
+            <ImageButton
+                android:id="@+id/ril_ib_u3"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginEnd="@dimen/dp35"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/theme_main"
+                android:rotation="90" />
+            <ImageButton
+                android:id="@+id/ril_ib_d3"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:stateListAnimator="@animator/button_scale_animator"
+                android:background="@drawable/ic_arrow_left"
+                android:backgroundTint="@color/gray_5"
+                android:rotation="-90" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp10">
+            <Button
+                android:id="@+id/ril_btn_clear"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp14"
+                android:text="清空全部" />
+            <Button
+                android:id="@+id/ril_btn_rand"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp14"
+                android:text="随机排座" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/ril_et_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:paddingHorizontal="@dimen/dp5"
+            android:background="@drawable/square_empty"
+            android:inputType="text"
+            android:importantForAutofill="no"
+            android:imeOptions="actionDone"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp14"
+            android:hint="在此输入对局标题" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp10"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp12"
+            android:text="输入的对局标题将显示在顶部导航栏上" />
+
+        <LinearLayout
+            android:id="@+id/ril_ll_pay"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp10"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp25"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14"
+                android:text="授受制选择" />
+            <Button
+                android:id="@+id/ril_btn_pay"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp5"
+                android:background="@drawable/btn_square_empty"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+        </LinearLayout>
+
+        <include layout="@layout/dialog_footer2" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

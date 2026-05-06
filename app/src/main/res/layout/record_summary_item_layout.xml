@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp5"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp30"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/rti_txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp20"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp14" />
+
+            <TextView
+                android:id="@+id/rti_txt_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp20"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp14" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/rti_btn_clear"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp14"
+            android:text="清除" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rti_rb_pl0"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp20"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14" />
+        <RadioButton
+            android:id="@+id/rti_rb_pl1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp20"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rti_rb_pl2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp20"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14" />
+        <RadioButton
+            android:id="@+id/rti_rb_pl3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp20"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14" />
+    </LinearLayout>
+</LinearLayout>

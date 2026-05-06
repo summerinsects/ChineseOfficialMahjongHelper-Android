@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText,LabelFor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/dialog_header" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp14"
+            android:text="本机将作为接收方，请输入发送方的IP地址" />
+
+        <EditText
+            android:id="@+id/rrl_et_ip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp25"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:paddingHorizontal="@dimen/dp5"
+            android:background="@drawable/square_empty"
+            android:inputType="text"
+            android:importantForAutofill="no"
+            android:imeOptions="actionDone"
+            android:maxLength="22"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp14" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginHorizontal="@dimen/dp20">
+            <Button
+                android:id="@+id/rrl_btn_conn"
+                android:layout_width="@dimen/dp80"
+                android:layout_height="@dimen/dp30"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp16"
+                android:text="连接" />
+            <ProgressBar
+                android:id="@+id/rrl_pb"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:progressBackgroundTint="@color/gray_6"
+                android:progressTint="@color/theme_main"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/rrl_txt_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp20"
+            android:gravity="center"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp14"
+            android:text="等待连接" />
+
+        <include layout="@layout/dialog_footer1" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

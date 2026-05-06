@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/dialog_header" />
+
+        <RelativeLayout
+            android:id="@+id/rcl_rl_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginVertical="@dimen/dp10">
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/rcl_btn_more"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="更多追分" />
+
+        <include layout="@layout/dialog_footer1" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

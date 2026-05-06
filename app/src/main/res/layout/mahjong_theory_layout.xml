@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp5">
+        <TextView
+            android:id="@+id/mtl_txt_tile"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp28"
+            android:paddingHorizontal="@dimen/dp5"
+            android:layout_marginEnd="@dimen/dp55"
+            android:background="@drawable/square_empty"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16" />
+        <Button
+            android:id="@+id/mtl_btn_random"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp28"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="随机" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mtl_rl_hand"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp28"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16"
+            android:text="考虑特殊和型"/>
+        <Button
+            android:id="@+id/mtl_btn_redo"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp28"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/btn_square"
+            android:enabled="false"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="重做" />
+        <Button
+            android:id="@+id/mtl_btn_undo"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp28"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp55"
+            android:background="@drawable/btn_square"
+            android:enabled="false"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:textSize="@dimen/dp16"
+            android:text="撤销" />
+        <TextView
+            android:id="@+id/mtl_txt_step"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp120"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14"
+            android:text="0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignBaseline="@+id/mtl_txt_step"
+            android:layout_toStartOf="@+id/mtl_txt_step"
+            android:singleLine="true"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14"
+            android:text="步数：" />
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp5">
+        <CheckBox
+            android:id="@+id/mtl_cb_sp"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp28"
+            android:layout_columnWeight="1"
+            android:checked="true"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16"
+            android:text="七对" />
+        <CheckBox
+            android:id="@+id/mtl_cb_to"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp28"
+            android:layout_columnWeight="1"
+            android:checked="true"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16"
+            android:text="十三幺" />
+        <CheckBox
+            android:id="@+id/mtl_cb_hkt"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp28"
+            android:layout_columnWeight="1"
+            android:checked="true"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16"
+            android:text="全不靠" />
+        <CheckBox
+            android:id="@+id/mtl_cb_kt"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp28"
+            android:layout_columnWeight="1"
+            android:checked="true"
+            android:singleLine="true"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16"
+            android:text="组合龙" />
+    </GridLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mtl_rv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp5"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

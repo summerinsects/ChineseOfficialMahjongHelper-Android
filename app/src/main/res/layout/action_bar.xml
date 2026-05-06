@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,ContentDescription"
+    android:id="@+id/ab_l"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp38"
+    android:background="@color/theme_main">
+
+    <ImageButton
+        android:id="@+id/ab_l_btn"
+        android:layout_width="@dimen/dp28"
+        android:layout_height="@dimen/dp28"
+        android:layout_margin="@dimen/dp5"
+        android:stateListAnimator="@animator/button_scale_animator"
+        android:background="@drawable/ic_arrow_left">
+    </ImageButton>
+
+    <ImageButton
+        android:id="@+id/ab_r_btn"
+        android:layout_width="@dimen/dp28"
+        android:layout_height="@dimen/dp28"
+        android:layout_margin="@dimen/dp5"
+        android:stateListAnimator="@animator/button_scale_animator"
+        android:background="@drawable/ic_menu"
+        android:layout_alignParentEnd="true">
+    </ImageButton>
+
+    <TextView
+        android:id="@+id/ab_txt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dp38"
+        android:textColor="#fff"
+        android:textSize="@dimen/dp20"
+        android:gravity="center"
+        android:ellipsize="middle"
+        android:singleLine="true" />
+
+</RelativeLayout>

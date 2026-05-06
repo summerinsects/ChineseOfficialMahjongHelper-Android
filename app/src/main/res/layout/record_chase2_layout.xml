@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="SpUsage,HardcodedText,LabelFor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/dialog_header" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14"
+            android:text="输入分差，可计算超分自摸、对点、旁点各需要多少番（超过）\n输入自摸、对点、旁点的番数，可计算能追多少分（追平）" />
+
+        <TextView
+            android:id="@+id/rc2l_txt_mode"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp16" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="分差" />
+            <EditText
+                android:id="@+id/rc2l_et_val0"
+                android:layout_width="@dimen/dp65"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16" />
+            <Button
+                android:id="@+id/rc2l_btn_calc0"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp16"
+                android:text="计算" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp5"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="自摸" />
+            <EditText
+                android:id="@+id/rc2l_et_val1"
+                android:layout_width="@dimen/dp65"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16" />
+            <Button
+                android:id="@+id/rc2l_btn_calc1"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp16"
+                android:text="计算" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp5"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="对点" />
+            <EditText
+                android:id="@+id/rc2l_et_val2"
+                android:layout_width="@dimen/dp65"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16" />
+            <Button
+                android:id="@+id/rc2l_btn_calc2"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp16"
+                android:text="计算" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="旁点" />
+            <EditText
+                android:id="@+id/rc2l_et_val3"
+                android:layout_width="@dimen/dp65"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginHorizontal="@dimen/dp5"
+                android:paddingHorizontal="@dimen/dp5"
+                android:background="@drawable/square_empty"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16" />
+            <Button
+                android:id="@+id/rc2l_btn_calc3"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp16"
+                android:text="计算" />
+        </LinearLayout>
+
+        <include layout="@layout/dialog_footer1" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
