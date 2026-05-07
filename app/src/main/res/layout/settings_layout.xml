@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/dp70"
-                    android:textColor="@color/text_1"
+                    android:textColor="@color/text_2"
                     android:textSize="@dimen/dp18"
                     android:text="启用坊间试验性授受制" />
                 <Switch
@@ -74,7 +74,7 @@
                 android:paddingHorizontal="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/text_1"
+                android:textColor="@color/text_2"
                 android:textSize="@dimen/dp18"
                 android:text="重置三色训练题库" />
 
@@ -85,7 +85,7 @@
                 android:paddingHorizontal="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
-                android:textColor="@color/text_1"
+                android:textColor="@color/text_2"
                 android:textSize="@dimen/dp18"
                 android:text="重置算番训练题库" />
 

@@ -56,7 +56,10 @@
         <activity android:name=".other.OtherEntertainmentActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".settings.SettingsActivity"
+        <activity android:name=".drawer.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".drawer.ChangelogActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>

@@ -1,4 +1,4 @@
-package net.tziakcha.chineseofficialmahjonghelper.settings;
+package net.tziakcha.chineseofficialmahjonghelper.drawer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

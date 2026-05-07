@@ -71,7 +71,9 @@ public class OtherCompetitionListFragment extends Fragment {
         mEmptyText = contentView.findViewById(R.id.crl_txt_empty);
         mEmptyText.setText("无近期赛事信息");
 
-        requestCompetitions();
+        if (mCompetitions.isEmpty()) {
+            requestCompetitions();
+        }
 
         return contentView;
     }
@@ -131,11 +133,13 @@ public class OtherCompetitionListFragment extends Fragment {
 
     private void openDetail(int idx) {
         final CompetitionInfo competition = mCompetitions.get(idx);
-        CommonWebFragment fragment = CommonWebFragment.newInstance(competition.name, competition.url);
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.cml_fl_root, fragment)
-                .addToBackStack(null)
-                .commit();
+        if (competition.url != null && !competition.url.isEmpty()) {
+            CommonWebFragment fragment = CommonWebFragment.newInstance(competition.name, competition.url);
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.cml_fl_root, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     private static String buildTimeAccuracyMonths(long start_time, long end_time) {

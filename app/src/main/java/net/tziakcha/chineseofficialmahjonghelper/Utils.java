@@ -75,6 +75,23 @@ public final class Utils {
         }
     }
 
+    public static String getStringFromAsset(Context context, String assetPath) {
+        try {
+            InputStream is = context.getAssets().open(assetPath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            StringBuilder str = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                str.append(line).append('\n');
+            }
+            reader.close();
+            return str.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
     public static String getStringFromFile(File file) {
         try {
             FileInputStream is = new FileInputStream(file);

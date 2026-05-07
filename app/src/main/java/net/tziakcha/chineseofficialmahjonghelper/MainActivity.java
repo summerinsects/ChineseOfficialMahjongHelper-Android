@@ -16,10 +16,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import net.tziakcha.chineseofficialmahjonghelper.calculator.FanCalculatorActivity;
+import net.tziakcha.chineseofficialmahjonghelper.drawer.ChangelogActivity;
+import net.tziakcha.chineseofficialmahjonghelper.drawer.SettingsActivity;
 import net.tziakcha.chineseofficialmahjonghelper.other.OtherBottomSheetDialog;
 import net.tziakcha.chineseofficialmahjonghelper.record.RecordMainActivity;
 import net.tziakcha.chineseofficialmahjonghelper.rule.RuleBottomSheetDialog;
-import net.tziakcha.chineseofficialmahjonghelper.settings.SettingsActivity;
 import net.tziakcha.chineseofficialmahjonghelper.theory.MahjongTheoryActivity;
 import net.tziakcha.chineseofficialmahjonghelper.training.TrainingBottomSheetDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonConfirmDialog;
@@ -95,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
         contentView.findViewById(R.id.am_btn_setting).setOnClickListener(view -> {
             Intent intent = new Intent(this, SettingsActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        });
+        contentView.findViewById(R.id.am_btn_changelog).setOnClickListener(view -> {
+            Intent intent = new Intent(this, ChangelogActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         });
