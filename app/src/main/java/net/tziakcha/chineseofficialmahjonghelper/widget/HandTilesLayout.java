@@ -418,7 +418,7 @@ public class HandTilesLayout extends RelativeLayout {
         // meldedIdx == 1: X_X 13吃2 tile+0
         // meldedIdx == 2: XX_ 12吃3 tile-1
         int tile = (int)mStandingTileButtons.get(mCurrentIdx).getTag();
-        int pack = Mahjong.makePack(meldedIdx, Mahjong.PACK_TYPE_CHOW, tile - meldedIdx + 1);
+        int pack = Mahjong.makePack(meldedIdx + 1, Mahjong.PACK_TYPE_CHOW, tile - meldedIdx + 1);
         mFixedPacks.add(pack);
 
         // 移除手牌中已经副露的3张牌
