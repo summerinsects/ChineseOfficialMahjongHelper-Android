@@ -115,43 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        new Thread(() -> {
-            try {
-                URL url = new URL("https://gitee.com/summerinsects/ChineseOfficialMahjongHelperDataSource/raw/master/other/tips.json");
-                HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-                try {
-                    BufferedInputStream is = new BufferedInputStream(urlConnection.getInputStream());
-                    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-                    int b;
-                    while ((b = is.read()) != -1) {
-                        buffer.write(b);
-                    }
-
-                    String str = buffer.toString("UTF-8");
-                    is.close();
-
-                    // 测试数据
-                    //str = "[{\"time\":1853616000,\"detail\":\"<font color=\\\"#fe576e\\\">第20届中国麻将牌王赛和大师赛</font><font color=\\\"#555555\\\">将于</font><font color=\\\"#2c79B2\\\">2019年3月22日-27日</font><font color=\\\"#555555\\\">在</font><font color=\\\"#ff7f00\\\">陕西西安</font><font color=\\\"#555555\\\">举办，详见「其他」-「近期赛事」</font>\"}]";
-
-                    if (!str.isEmpty()) {
-                        ArrayList<String> tips = parseResponse(str);
-                        if (!tips.isEmpty()) {
-                            mHandler.post(() -> {
-                                mMarqueeNoticeView.setVisibility(View.VISIBLE);
-                                mMarqueeNoticeView.setNoticeList(tips);
-
-                                // NOTE: 重要，否则不滚动，改用runOnUiThread也不行
-                                mHandler.post(() -> mMarqueeNoticeView.startScroll());
-                            });
-                        }
-                    }
-                } finally {
-                    urlConnection.disconnect();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        requestMarqueeNotice();
     }
 
     @Override
@@ -172,27 +136,61 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static ArrayList<String> parseResponse(String str) {
+    private void requestMarqueeNotice() {
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://gitee.com/summerinsects/ChineseOfficialMahjongHelperDataSource/raw/master/other/tips.json");
+                HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+                try {
+                    BufferedInputStream is = new BufferedInputStream(urlConnection.getInputStream());
+                    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                    int b;
+                    while ((b = is.read()) != -1) {
+                        buffer.write(b);
+                    }
 
-        final long now = System.currentTimeMillis() / 1000;
-        ArrayList<String> tips = new ArrayList<>();
+                    String str = buffer.toString("UTF-8");
+                    is.close();
 
-        try {
-            JSONArray arr = new JSONArray(str);
-            int len = arr.length();
-            for (int i = 0; i < len; ++i) {
-                JSONObject obj = arr.getJSONObject(i);
+                    // 测试数据
+                    //str = "[{\"time\":1853616000,\"detail\":\"<font color=\\\"#fe576e\\\">第20届中国麻将牌王赛和大师赛</font><font color=\\\"#555555\\\">将于</font><font color=\\\"#2c79B2\\\">2019年3月22日-27日</font><font color=\\\"#555555\\\">在</font><font color=\\\"#ff7f00\\\">陕西西安</font><font color=\\\"#555555\\\">举办，详见「其他」-「近期赛事」</font>\"}]";
 
-                long time = obj.has("time") ? obj.getLong("time") : 0;
-                if (time > now) {
-                    tips.add(obj.getString("detail"));
+                    if (!str.isEmpty()) {
+                        final long now = System.currentTimeMillis() / 1000;
+                        ArrayList<String> tips = new ArrayList<>();
+
+                        try {
+                            JSONArray arr = new JSONArray(str);
+                            int len = arr.length();
+                            for (int i = 0; i < len; ++i) {
+                                JSONObject obj = arr.getJSONObject(i);
+
+                                long time = obj.has("time") ? obj.getLong("time") : 0;
+                                if (time > now) {
+                                    tips.add(obj.getString("detail"));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (!tips.isEmpty()) {
+                            mHandler.post(() -> {
+                                mMarqueeNoticeView.setVisibility(View.VISIBLE);
+                                mMarqueeNoticeView.setNoticeList(tips);
+
+                                // NOTE: 重要，否则不滚动，改用runOnUiThread也不行
+                                mHandler.post(() -> mMarqueeNoticeView.startScroll());
+                            });
+                        }
+                    }
+                } finally {
+                    urlConnection.disconnect();
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return tips;
+        }).start();
     }
 
     /**
