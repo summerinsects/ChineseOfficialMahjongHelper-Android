@@ -131,7 +131,7 @@ public class TrainingDiscardActivity extends AppCompatActivity {
                 if (res) {
                     setPuzzle();
                 } else {
-                    Utils.toastMakeText(TrainingDiscardActivity.this, "加载题库失败", 1).show();
+                    Utils.showToastLong(TrainingDiscardActivity.this, "加载题库失败");
                 }
                 dialog.dismiss();
             });
@@ -602,7 +602,7 @@ public class TrainingDiscardActivity extends AppCompatActivity {
 
                 mHandler.post(() -> {
                     loadingDialog.dismiss();
-                    Utils.toastMakeText(this, "更新题库失败！", 1).show();
+                    Utils.showToastLong(this, "更新题库失败！");
                 });
             }
         }).start();

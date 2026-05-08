@@ -160,13 +160,13 @@ public class FanCalculatorActivity extends AppCompatActivity {
 
         int flw = mFlower;
         if (flw > 8) {
-            Utils.toastMakeText(this, "花牌数的范围为0~8", 1).show();
+            Utils.showToastLong(this, "花牌数的范围为0~8");
             return;
         }
 
         Mahjong.HandTiles ht = mTilePickerLayout.getData();
         if (ht.wt == 0) {
-            Utils.toastMakeText(this, "牌张数错误", 1).show();
+            Utils.showToastLong(this, "牌张数错误");
             return;
         }
 
@@ -179,15 +179,15 @@ public class FanCalculatorActivity extends AppCompatActivity {
         if (mWLCheckBox.isChecked()) cond |= 8;
         int res = Mahjong.calculateFan(ht.st, ht.fp, ht.wt, cond, mPrevalentWind, mSeatWind, flw, fan);
         if (res == Mahjong.ERROR_NOT_WIN) {
-            Utils.toastMakeText(this, "诈和", 1).show();
+            Utils.showToastLong(this, "诈和");
             return;
         }
         if (res == Mahjong.ERROR_WRONG_TILES_COUNT) {
-            Utils.toastMakeText(this, "牌张数错误", 1).show();
+            Utils.showToastLong(this, "牌张数错误");
             return;
         }
         if (res == Mahjong.ERROR_TILE_MORE_THAN_4) {
-            Utils.toastMakeText(this, "同一种牌最多只能使用4枚", 1).show();
+            Utils.showToastLong(this, "同一种牌最多只能使用4枚");
             return;
         }
 
@@ -420,11 +420,11 @@ public class FanCalculatorActivity extends AppCompatActivity {
         Mahjong.HandTiles handTiles = new Mahjong.HandTiles();
         int res = Mahjong.parseHandTiles(str, handTiles);
         if (res != Mahjong.PARSE_NO_ERROR) {
-            Utils.toastMakeText(this, Mahjong.getParseResultString(res), 1).show();
+            Utils.showToastLong(this, Mahjong.getParseResultString(res));
             return false;
         }
         if (handTiles.wt == 0) {
-            Utils.toastMakeText(this, "缺少和牌张", 1).show();
+            Utils.showToastLong(this, "缺少和牌张");
             return false;
         }
 

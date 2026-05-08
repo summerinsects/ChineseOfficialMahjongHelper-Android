@@ -224,15 +224,22 @@ public final class Utils {
         }
     }
 
-    public static Toast toastMakeText(Context context, String str, int duration) {
+    private static void showToast(Context context, String str, int duration) {
         View contentView = View.inflate(context, R.layout.common_toast_layout, null);
         ((TextView)contentView.findViewById(R.id.chl_txt)).setText(str);
 
         Toast toast = new Toast(context);
         toast.setDuration(duration);
         toast.setView(contentView);
+        toast.show();
+    }
 
-        return toast;
+    public static void showToastShort(Context context, String str) {
+        showToast(context, str, Toast.LENGTH_SHORT);
+    }
+
+    public static void showToastLong(Context context, String str) {
+        showToast(context, str, Toast.LENGTH_LONG);
     }
 
 }

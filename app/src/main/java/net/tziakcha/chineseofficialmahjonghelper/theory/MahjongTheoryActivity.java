@@ -217,7 +217,7 @@ public class MahjongTheoryActivity extends AppCompatActivity {
 
     private void setSpecifiedInput(Mahjong.HandTiles handTiles) {
         if (!adjustHandTiles(handTiles)) {
-            Utils.toastMakeText(this, "错误的牌数目", 1).show();
+            Utils.showToastLong(this, "错误的牌数目");
             return;
         }
 
@@ -286,7 +286,7 @@ public class MahjongTheoryActivity extends AppCompatActivity {
         Mahjong.HandTiles handTiles = new Mahjong.HandTiles();
         int res = Mahjong.parseHandTiles(str, handTiles);
         if (res != Mahjong.PARSE_NO_ERROR) {
-            Utils.toastMakeText(this, Mahjong.getParseResultString(res), 1).show();
+            Utils.showToastLong(this, Mahjong.getParseResultString(res));
             return false;
         }
 

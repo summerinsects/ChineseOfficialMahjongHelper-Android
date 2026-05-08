@@ -529,14 +529,14 @@ public class RecordSheetFragment extends Fragment {
         Context context = requireContext();
         if (mRecordInfo.start_time != 0) {
             if (mRecordInfo.mode != mode) {
-                Utils.toastMakeText(context, "对局开始后不允许更改授受制", 1).show();
+                Utils.showToastLong(context, "对局开始后不允许更改授受制");
                 return false;
             }
 
             // 检查空输入
             for (int i = 0; i < 4; ++i) {
                 if (names[i].isEmpty()) {
-                    Utils.toastMakeText(context, "对局开始后不允许清空选手姓名", 1).show();
+                    Utils.showToastLong(context, "对局开始后不允许清空选手姓名");
                     return false;
                 }
             }
@@ -547,7 +547,7 @@ public class RecordSheetFragment extends Fragment {
             if (!names[i].isEmpty()) {
                 for (int k = i + 1; k < 4; ++k) {
                     if (!names[k].isEmpty() && names[k].equalsIgnoreCase(names[i])) {
-                        Utils.toastMakeText(context, "选手姓名不能相同", 1).show();
+                        Utils.showToastLong(context, "选手姓名不能相同");
                         return false;
                     }
                 }

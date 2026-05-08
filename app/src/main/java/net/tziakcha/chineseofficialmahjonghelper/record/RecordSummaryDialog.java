@@ -70,7 +70,7 @@ public class RecordSummaryDialog extends AlertDialog {
             if (mSelectionCount > 0) {
                 mOnSubmitListener.onSubmit(mSelections);
             } else {
-                Utils.toastMakeText(getContext(), "请选择需要汇总的选手", 1).show();
+                Utils.showToastLong(getContext(), "请选择需要汇总的选手");
             }
         });
 

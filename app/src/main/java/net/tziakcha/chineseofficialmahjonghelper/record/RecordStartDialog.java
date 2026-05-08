@@ -186,7 +186,7 @@ public class RecordStartDialog extends AlertDialog {
         for (int i = 0; i < 4; ++i) {
             names[i] = mNameEdit[i].getText().toString();
             if (names[i].isEmpty()) {
-                Utils.toastMakeText(getContext(), "请先输入四位参赛选手姓名", 0).show();
+                Utils.showToastShort(getContext(), "请先输入四位参赛选手姓名");
                 return;
             }
         }

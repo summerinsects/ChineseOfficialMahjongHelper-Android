@@ -134,7 +134,7 @@ public class RecordHistoryFragment extends Fragment {
             if (count > 0) {
                 showSendDialog(selections);
             } else {
-                Utils.toastMakeText(getContext(), "请选择需要发送的对局", 1).show();
+                Utils.showToastLong(getContext(), "请选择需要发送的对局");
             }
         }).show();
     }
@@ -706,7 +706,7 @@ public class RecordHistoryFragment extends Fragment {
                 sRecordList.remove(item.record);
                 mHistoryRecyclerViewAdapter.notifyItemRemoved(idx);
             } else {
-                Utils.toastMakeText(requireContext(), "删除记录失败", 0).show();
+                Utils.showToastShort(requireContext(), "删除记录失败");
             }
         }).show();
     }
@@ -726,10 +726,10 @@ public class RecordHistoryFragment extends Fragment {
                     }
                 }
             }
-            Utils.toastMakeText(getContext(), "成功删除" + cnt + "/" + count + "局", 1).show();
+            Utils.showToastLong(getContext(), "成功删除" + cnt + "/" + count + "局");
             dialog.dismiss();
         } else {
-            Utils.toastMakeText(getContext(), "请选择需要删除的对局", 1).show();
+            Utils.showToastLong(getContext(), "请选择需要删除的对局");
         }
     }
 

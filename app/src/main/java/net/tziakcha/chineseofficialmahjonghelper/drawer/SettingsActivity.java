@@ -48,15 +48,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void resetTrainDiscard() {
-        Utils.toastMakeText(this,
-                TrainingDiscardActivity.resetPuzzle(getFilesDir()) ? "三色训练重置成功" : "三色训练重置失败",
-                0).show();
+        Utils.showToastShort(this,
+                TrainingDiscardActivity.resetPuzzle(getFilesDir()) ? "三色训练重置成功" : "三色训练重置失败");
     }
 
     private void resetTrainCount() {
-        Utils.toastMakeText(this,
-                TrainingCountActivity.resetPuzzle(getFilesDir()) ? "算番训练重置成功" : "算番训练重置失败",
-                0).show();
+        Utils.showToastShort(this,
+                TrainingCountActivity.resetPuzzle(getFilesDir()) ? "算番训练重置成功" : "算番训练重置失败");
     }
 
 }
