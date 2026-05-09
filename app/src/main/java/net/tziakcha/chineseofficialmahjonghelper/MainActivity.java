@@ -1,17 +1,29 @@
 package net.tziakcha.chineseofficialmahjonghelper;
 
 import android.annotation.SuppressLint;
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -32,6 +44,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -46,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
     private MarqueeNoticeView mMarqueeNoticeView;
     private final Handler mHandler = new Handler(Looper.getMainLooper());
+    private boolean mIsPaused = false;
+    private boolean mCheckingVersion = false;
+    private BroadcastReceiver mDownloadCompleteReceiver;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -104,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         });
+        contentView.findViewById(R.id.am_btn_version).setOnClickListener(view -> checkVersion(true));
         contentView.findViewById(R.id.am_btn_exit).setOnClickListener(
                 view -> getOnBackPressedDispatcher().onBackPressed());
 
@@ -116,12 +133,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         requestMarqueeNotice();
+        checkVersion(false);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
+        mIsPaused = true;
         if (mMarqueeNoticeView.getVisibility() == View.VISIBLE) {
             mMarqueeNoticeView.stopScroll();
         }
@@ -131,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        mIsPaused = false;
         if (mMarqueeNoticeView.getVisibility() == View.VISIBLE) {
             mMarqueeNoticeView.startScroll();
         }
@@ -191,6 +211,178 @@ public class MainActivity extends AppCompatActivity {
                 Utils.printDebugStackTrace(e);
             }
         }).start();
+    }
+
+    private void checkVersion(boolean manual) {
+        if (mCheckingVersion) {
+            return;
+        }
+
+        mCheckingVersion = true;
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://api.github.com/repos/summerinsects/ChineseOfficialMahjongHelper-Android/releases/latest");
+                HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+                try {
+                    BufferedInputStream is = new BufferedInputStream(urlConnection.getInputStream());
+                    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                    int b;
+                    while ((b = is.read()) != -1) {
+                        buffer.write(b);
+                    }
+
+                    String str = buffer.toString("UTF-8");
+                    is.close();
+                    if (!str.isEmpty()) {
+                        try {
+                            JSONObject obj = new JSONObject(str);
+                            if (obj.has("tag_name")) {
+                                String tag = obj.getString("tag_name");
+                                int remoteVersion = parseVersionNumber(tag.substring(1));
+                                int localVersion = parseVersionNumber(BuildConfig.VERSION_NAME);
+                                if (remoteVersion > localVersion) {
+                                    String body = obj.has("body") ? obj.getString("body") : "";
+                                    String downloadUrl = null;
+                                    if (obj.has("assets")) {
+                                        JSONArray assets = obj.getJSONArray("assets");
+                                        for (int i = 0, len = assets.length(); i < len; ++i) {
+                                            JSONObject asset = assets.getJSONObject(i);
+                                            if (asset.has("browser_download_url")) {
+                                                downloadUrl = asset.getString("browser_download_url");
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    if (downloadUrl != null && !downloadUrl.isEmpty()) {
+                                        String finalDownloadUrl = downloadUrl;
+                                        runOnUiThread(
+                                                () -> new CommonConfirmDialog(this, "检测到新版本",
+                                                    tag + "，是否下载？\n\n" + body,
+                                                    "更新", "取消",
+                                                        () -> checkInstallPermissionBeforeDownload(finalDownloadUrl)).show());
+                                    }
+                                } else {
+                                    if (manual && !mIsPaused) {
+                                        runOnUiThread(
+                                                () -> Utils.showToastShort(this, "已经是最新版本"));
+                                    }
+                                }
+                            }
+                        } catch (JSONException e) {
+                            if (manual && !mIsPaused) {
+                                runOnUiThread(
+                                        () -> Utils.showToastShort(this, "获取最新版本失败"));
+                            }
+
+                            Utils.printDebugStackTrace(e);
+                        }
+                    }
+                } finally {
+                    urlConnection.disconnect();
+                }
+            } catch (IOException e) {
+                if (manual && !mIsPaused) {
+                    runOnUiThread(
+                            () -> Utils.showToastShort(this, "获取最新版本失败"));
+                }
+
+                Utils.printDebugStackTrace(e);
+            }
+
+            mCheckingVersion = false;
+        }).start();
+    }
+
+    private static int parseVersionNumber(String version) {
+        String[] parts = version.split("\\.");
+        int major = 0;
+        int minor = 0;
+        int patch = 0;
+        if (parts.length >= 1) {
+            major = Integer.parseInt(parts[0]);
+        }
+        if (parts.length >= 2) {
+            minor = Integer.parseInt(parts[1]);
+        }
+        if (parts.length >= 3) {
+            patch = Integer.parseInt(parts[2]);
+        }
+        return (major << 16) | (minor << 8) | patch;
+    }
+
+    private String mApkUrl = null;
+    private final ActivityResultLauncher<Intent> mInstallPermissionLauncher
+            = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        // 用户从设置页面返回后，再次检查权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (getPackageManager().canRequestPackageInstalls()) {
+                startDownload();
+            } else {
+                Utils.showToastShort(this, "未授予安装权限，无法更新");
+            }
+        }
+    });
+
+    private void checkInstallPermissionBeforeDownload(String apkUrl) {
+        mApkUrl = apkUrl;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (!getPackageManager().canRequestPackageInstalls()) {
+                // 跳转到系统设置页面授权
+                Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                mInstallPermissionLauncher.launch(intent);
+                return;
+            }
+        }
+        startDownload();
+    }
+
+    private void startDownload() {
+        File downloadDir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+
+        String fileName = "app_update_" + System.currentTimeMillis() + ".apk";
+        final File apkFile = new File(downloadDir, fileName);
+
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(mApkUrl));
+        request.setDestinationUri(Uri.fromFile(apkFile));
+        request.setTitle("正在下载更新");
+        request.setDescription("下载完成后将自动安装");
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setMimeType("application/vnd.android.package-archive");
+        // 允许在漫游时下载（可选）
+        request.setAllowedOverRoaming(false);
+        // 仅允许 WiFi 下载（可选，根据需求设置）
+        // request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+
+        DownloadManager downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
+        long downloadId = downloadManager.enqueue(request);
+
+        mDownloadCompleteReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                long completedDownloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+                if (downloadId == completedDownloadId) {
+                    installApk(apkFile);
+                    context.unregisterReceiver(mDownloadCompleteReceiver);
+                }
+            }
+        };
+
+        ContextCompat.registerReceiver(this, mDownloadCompleteReceiver,
+                new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), ContextCompat.RECEIVER_EXPORTED);
+    }
+
+    private void installApk(File apkFile) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri apkUri = FileProvider.getUriForFile(this,
+                this.getPackageName() + ".fileprovider", apkFile);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(intent);
     }
 
     /**

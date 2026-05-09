@@ -197,6 +197,20 @@
             android:background="@color/gray_6" />
 
         <Button
+            android:id="@+id/am_btn_version"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp16"
+            android:text="版本检测" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/gray_6" />
+
+        <Button
             android:id="@+id/am_btn_exit"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp40"
