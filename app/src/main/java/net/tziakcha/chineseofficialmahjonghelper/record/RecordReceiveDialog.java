@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import net.tziakcha.chineseofficialmahjonghelper.R;
+import net.tziakcha.chineseofficialmahjonghelper.Utils;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonConfirmDialog;
 
 import java.io.BufferedInputStream;
@@ -133,7 +134,7 @@ public class RecordReceiveDialog extends AlertDialog {
                         mSocket = null;
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Utils.printDebugStackTrace(e);
                 }
                 dismiss();
             }).show();
@@ -225,7 +226,7 @@ public class RecordReceiveDialog extends AlertDialog {
                 mSocket = null;
             } catch (Exception e) {
                 mHandler.post(this::reportError);
-                e.printStackTrace();
+                Utils.printDebugStackTrace(e);
             }
         }).start();
 

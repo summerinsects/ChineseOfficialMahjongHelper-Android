@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Utils.printDebugStackTrace(e);
                         }
 
                         if (!tips.isEmpty()) {
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                Utils.printDebugStackTrace(e);
             }
         }).start();
     }

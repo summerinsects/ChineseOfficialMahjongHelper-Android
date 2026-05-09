@@ -476,7 +476,7 @@ public class TrainingCountActivity extends AppCompatActivity {
                             try {
                                 os.close();
                             } catch (IOException e) {
-                                e.printStackTrace();
+                                Utils.printDebugStackTrace(e);
                             }
                         }
                     }
@@ -511,12 +511,12 @@ public class TrainingCountActivity extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-
                 mHandler.post(() -> {
                     loadingDialog.dismiss();
                     Utils.showToastLong(this, "更新题库失败！");
                 });
+
+                Utils.printDebugStackTrace(e);
             }
         }).start();
     }

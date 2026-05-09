@@ -25,6 +25,12 @@ import java.nio.charset.StandardCharsets;
 
 public final class Utils {
 
+    public static void printDebugStackTrace(Exception e) {
+        if (BuildConfig.DEBUG) {
+            e.printStackTrace();
+        }
+    }
+
     public static String copyAssetToInternalStorage(Context context, String assetPath) {
         final int lastSlashIndex = assetPath.lastIndexOf('/');
         String dirPath;
@@ -69,7 +75,7 @@ public final class Utils {
                 try {
                     os.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    printDebugStackTrace(e);
                 }
             }
         }
@@ -87,7 +93,7 @@ public final class Utils {
             reader.close();
             return str.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            printDebugStackTrace(e);
             return "";
         }
     }
@@ -104,7 +110,7 @@ public final class Utils {
             reader.close();
             return str.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            printDebugStackTrace(e);
             return "";
         }
     }
@@ -125,7 +131,7 @@ public final class Utils {
             os.close();
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            printDebugStackTrace(e);
             return false;
         }
     }

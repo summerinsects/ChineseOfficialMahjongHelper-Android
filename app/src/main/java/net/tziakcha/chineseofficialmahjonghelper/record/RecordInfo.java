@@ -1,5 +1,7 @@
 package net.tziakcha.chineseofficialmahjonghelper.record;
 
+import net.tziakcha.chineseofficialmahjonghelper.Utils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -242,7 +244,7 @@ public final class RecordInfo {
             recordToJSON(stringer, record);
             return stringer.toString();
         } catch (JSONException e) {
-            e.printStackTrace();
+            Utils.printDebugStackTrace(e);
         }
         return null;
     }
@@ -346,7 +348,7 @@ public final class RecordInfo {
             parseRecordV0(new JSONObject(str), record);
             return true;
         } catch (JSONException e) {
-            e.printStackTrace();
+            Utils.printDebugStackTrace(e);
         }
         return false;
     }
@@ -356,7 +358,7 @@ public final class RecordInfo {
             parseRecord(new JSONObject(str), record);
             return true;
         } catch (JSONException e) {
-            e.printStackTrace();
+            Utils.printDebugStackTrace(e);
         }
         return false;
     }

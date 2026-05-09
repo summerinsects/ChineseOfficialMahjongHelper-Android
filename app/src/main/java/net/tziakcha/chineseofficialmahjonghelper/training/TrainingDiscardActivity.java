@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -164,8 +163,7 @@ public class TrainingDiscardActivity extends AppCompatActivity {
             }
             reader.close();
         } catch (Exception e) {
-            //e.printStackTrace();
-            Log.e("DTA", Objects.requireNonNull(e.getLocalizedMessage()));
+            Utils.printDebugStackTrace(e);
         }
         return true;
     }
@@ -566,7 +564,7 @@ public class TrainingDiscardActivity extends AppCompatActivity {
                             try {
                                 os.close();
                             } catch (IOException e) {
-                                e.printStackTrace();
+                                Utils.printDebugStackTrace(e);
                             }
                         }
                     }
@@ -598,12 +596,12 @@ public class TrainingDiscardActivity extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-
                 mHandler.post(() -> {
                     loadingDialog.dismiss();
                     Utils.showToastLong(this, "更新题库失败！");
                 });
+
+                Utils.printDebugStackTrace(e);
             }
         }).start();
     }

@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 
 import net.tziakcha.chineseofficialmahjonghelper.Common;
 import net.tziakcha.chineseofficialmahjonghelper.R;
+import net.tziakcha.chineseofficialmahjonghelper.Utils;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonConfirmDialog;
 
 import java.io.BufferedOutputStream;
@@ -171,7 +172,7 @@ public class RecordSendDialog extends AlertDialog {
                 mServerSocket = null;
             } catch (IOException | InterruptedException e) {
                 mHandler.post(this::reportError);
-                e.printStackTrace();
+                Utils.printDebugStackTrace(e);
             }
         }).start();
     }
@@ -191,7 +192,7 @@ public class RecordSendDialog extends AlertDialog {
                         mServerSocket = null;
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Utils.printDebugStackTrace(e);
                 }
             }).show();
         } else {
@@ -237,7 +238,7 @@ public class RecordSendDialog extends AlertDialog {
                 }
             }
         } catch (SocketException e) {
-            e.printStackTrace();
+            Utils.printDebugStackTrace(e);
         }
 
         return null;

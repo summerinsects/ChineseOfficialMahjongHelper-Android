@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.tziakcha.chineseofficialmahjonghelper.R;
+import net.tziakcha.chineseofficialmahjonghelper.Utils;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonConfirmDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFullScreenDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.LoadingDialog;
@@ -119,14 +120,14 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
-
                 runOnUiThread(() -> {
                     loadingDialog.dismiss();
 
                     new CommonConfirmDialog(this, "提示", "获取近期赛事失败",
                             "重试", "取消", this::requestCompetitions).show();
                 });
+
+                Utils.printDebugStackTrace(e);
             }
         }).start();
     }
@@ -360,7 +361,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
             }
 
         } catch (JSONException e) {
-            e.printStackTrace();
+            Utils.printDebugStackTrace(e);
         }
 
         return competitions;
