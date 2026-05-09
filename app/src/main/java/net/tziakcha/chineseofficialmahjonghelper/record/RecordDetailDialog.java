@@ -643,7 +643,7 @@ public class RecordDetailDialog extends AlertDialog {
             int value = 0;
             for (int n = Mahjong.BIG_FOUR_WINDS; n < Mahjong.DRAGON_PUNG; ++n) {
                 if ((mDetail.fan_major & (1L << (Mahjong.LAST_TILE - n))) != 0) {
-                    value += Mahjong.FAN_VALUE_TABLE[fan];
+                    value += Mahjong.FAN_VALUE_TABLE[n];
                 }
             }
 
