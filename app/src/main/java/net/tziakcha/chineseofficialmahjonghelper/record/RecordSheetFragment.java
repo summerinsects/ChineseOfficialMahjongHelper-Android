@@ -103,23 +103,6 @@ public class RecordSheetFragment extends Fragment {
                 requireActivity().getOnBackPressedDispatcher().onBackPressed());
 
         Context context = requireContext();
-        View rightButton = contentView.findViewById(R.id.ab_r_btn);
-        mPopupWindow = Utils.createPopupMenu(context, rightButton, new String[]{
-                "历史记录", "清空表格", "追分策略", "编辑信息", "更多设置", "使用说明"
-        });
-        rightButton.setOnClickListener(view -> mPopupWindow.show());
-        mPopupWindow.setOnItemClickListener((adapterView, view1, position, id) -> {
-            switch (position) {
-                case 0: onHistoryButton(); break;
-                case 1: onResetButton(); break;
-                case 2: onChaseButton(); break;
-                case 3: onEditButton(); break;
-                case 4: onSettingButton(); break;
-                case 5: onInstructionButton(); break;
-                default: break;
-            }
-            mPopupWindow.dismiss();
-        });
 
         mTimeText = contentView.findViewById(R.id.rsl_txt_time);
         TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mTimeText,
@@ -131,14 +114,78 @@ public class RecordSheetFragment extends Fragment {
         RelativeLayout rlSheet = contentView.findViewById(R.id.rsl_rl_sheet);
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         final int colWidth = metrics.widthPixels / 6;
-        //38+22+12=72，留点空隙取80
+
+        // 状态栏22+标题38+时间12=72，留点空隙取80
         final int siblingHeight = getResources().getDimensionPixelSize(R.dimen.dp80);
+        final int maxSheetHeight = metrics.heightPixels - siblingHeight;
+
         // 选手姓名+开局座位+每圈座位+累计+名次+标准分 16+6=22
-        final int colMaxHeight = (metrics.heightPixels - siblingHeight) / 22;
+        final int colMaxHeight = maxSheetHeight / 22;
         final int colHeight = Math.min(colMaxHeight, (int)(Math.floor((double)colWidth * 0.4)));
         final int textSize = (int)Math.ceil(colHeight * 0.95f);
 
-        rlSheet.getLayoutParams().height = colHeight * 22 + 2;
+        final int sheetHeight = colHeight * 22 + 2;
+        rlSheet.getLayoutParams().height = sheetHeight;
+
+        // 是否有空间放四个按钮
+        final int dp28 = context.getResources().getDimensionPixelSize(R.dimen.dp28);
+        final int dp5 = context.getResources().getDimensionPixelSize(R.dimen.dp5);
+        if (maxSheetHeight - sheetHeight >= dp28 + dp5) {
+            View button;
+
+            button = contentView.findViewById(R.id.rsl_btn_chase);
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(view -> onChaseButton());
+
+            button = contentView.findViewById(R.id.rsl_btn_clear);
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(view -> onResetButton());
+
+            button = contentView.findViewById(R.id.rsl_btn_history);
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(view -> onHistoryButton());
+
+            button = contentView.findViewById(R.id.rsl_btn_edit);
+            button.setVisibility(View.VISIBLE);
+            button.setOnClickListener(view -> onEditButton());
+
+            View rightButton = contentView.findViewById(R.id.ab_r_btn);
+            mPopupWindow = Utils.createPopupMenu(context, rightButton, new String[]{
+                    "更多设置", "使用说明"
+            });
+            rightButton.setOnClickListener(view -> mPopupWindow.show());
+            mPopupWindow.setOnItemClickListener((adapterView, view1, position, id) -> {
+                switch (position) {
+                    case 0: onSettingButton(); break;
+                    case 1: onInstructionButton(); break;
+                    default: break;
+                }
+                mPopupWindow.dismiss();
+            });
+        } else {
+            contentView.findViewById(R.id.rsl_btn_chase).setVisibility(View.GONE);
+            contentView.findViewById(R.id.rsl_btn_clear).setVisibility(View.GONE);
+            contentView.findViewById(R.id.rsl_btn_history).setVisibility(View.GONE);
+            contentView.findViewById(R.id.rsl_btn_edit).setVisibility(View.GONE);
+
+            View rightButton = contentView.findViewById(R.id.ab_r_btn);
+            mPopupWindow = Utils.createPopupMenu(context, rightButton, new String[]{
+                    "历史记录", "清空表格", "追分策略", "编辑信息", "更多设置", "使用说明"
+            });
+            rightButton.setOnClickListener(view -> mPopupWindow.show());
+            mPopupWindow.setOnItemClickListener((adapterView, view1, position, id) -> {
+                switch (position) {
+                    case 0: onHistoryButton(); break;
+                    case 1: onResetButton(); break;
+                    case 2: onChaseButton(); break;
+                    case 3: onEditButton(); break;
+                    case 4: onSettingButton(); break;
+                    case 5: onInstructionButton(); break;
+                    default: break;
+                }
+                mPopupWindow.dismiss();
+            });
+        }
 
         final int textColor1 = ContextCompat.getColor(context, R.color.text_1);
         final int textColor2 = ContextCompat.getColor(context, R.color.text_3);
