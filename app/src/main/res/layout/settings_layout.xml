@@ -24,33 +24,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp5"
                 android:paddingHorizontal="@dimen/dp10"
                 android:textColor="@color/theme_main"
-                android:textSize="@dimen/dp16"
+                android:textSize="@dimen/dp14"
                 android:text="计分设置" />
 
             <RelativeLayout
                 android:id="@+id/sl_record_rl_pay"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
-                android:layout_marginTop="@dimen/dp10"
+                android:layout_height="@dimen/dp40"
                 android:paddingHorizontal="@dimen/dp10"
                 android:background="?android:attr/selectableItemBackground">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/dp70"
+                    android:layout_marginEnd="@dimen/dp40"
                     android:textColor="@color/text_2"
-                    android:textSize="@dimen/dp18"
+                    android:textSize="@dimen/dp16"
                     android:text="启用坊间试验性授受制" />
-                <Switch
-                    android:id="@+id/sl_record_sw_pay"
+                <CheckBox
+                    android:id="@+id/sl_record_cb_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"
-                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+                    android:layout_alignParentEnd="true" />
             </RelativeLayout>
 
             <View
@@ -62,31 +61,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp5"
                 android:paddingHorizontal="@dimen/dp10"
                 android:textColor="@color/theme_main"
-                android:textSize="@dimen/dp16"
+                android:textSize="@dimen/dp14"
                 android:text="训练设置" />
 
             <TextView
                 android:id="@+id/sl_train_txt_discard"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
+                android:layout_height="@dimen/dp40"
                 android:paddingHorizontal="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/text_2"
-                android:textSize="@dimen/dp18"
+                android:textSize="@dimen/dp16"
                 android:text="重置三色训练题库" />
 
             <TextView
                 android:id="@+id/sl_train_txt_count"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp50"
+                android:layout_height="@dimen/dp40"
                 android:paddingHorizontal="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/text_2"
-                android:textSize="@dimen/dp18"
+                android:textSize="@dimen/dp16"
                 android:text="重置算番训练题库" />
 
         </LinearLayout>

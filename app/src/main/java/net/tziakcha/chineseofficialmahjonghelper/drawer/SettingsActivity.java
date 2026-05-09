@@ -1,10 +1,9 @@
 package net.tziakcha.chineseofficialmahjonghelper.drawer;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -32,16 +31,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         contentView.findViewById(R.id.ab_r_btn).setVisibility(View.GONE);
 
-        @SuppressLint("UseSwitchCompatOrMaterialCode")
-        Switch sw = contentView.findViewById(R.id.sl_record_sw_pay);
-        sw.setChecked(getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        CheckBox checkBox = contentView.findViewById(R.id.sl_record_cb_pay);
+        checkBox.setChecked(getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
                 .getBoolean("MorePayment", false));
-        sw.setOnCheckedChangeListener((view, checked) ->
+        checkBox.setOnCheckedChangeListener((view, checked) ->
                 getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
                         .edit().putBoolean("MorePayment", checked).apply());
-        Utils.adaptCompoundButton(sw, getResources().getDimensionPixelSize(R.dimen.dp40));
+        Utils.adaptCompoundButton(checkBox, getResources().getDimensionPixelSize(R.dimen.dp28));
 
-        contentView.findViewById(R.id.sl_record_rl_pay).setOnClickListener(view -> sw.performClick());
+        contentView.findViewById(R.id.sl_record_rl_pay).setOnClickListener(view -> checkBox.performClick());
 
         contentView.findViewById(R.id.sl_train_txt_discard).setOnClickListener(view -> resetTrainDiscard());
         contentView.findViewById(R.id.sl_train_txt_count).setOnClickListener(view -> resetTrainCount());

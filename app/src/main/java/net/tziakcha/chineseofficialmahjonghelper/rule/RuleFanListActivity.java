@@ -220,8 +220,10 @@ public class RuleFanListActivity extends AppCompatActivity {
 
             // 下面所有按钮的根View
             RelativeLayout root = new RelativeLayout(context);
-            root.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+            LinearLayout.LayoutParams llp0 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            llp0.bottomMargin = sButtonGapI;
+            root.setLayoutParams(llp0);
             linearLayout.addView(root);
 
             for (int i = 0; i < 13; ++i) {
@@ -248,8 +250,6 @@ public class RuleFanListActivity extends AppCompatActivity {
             mIndex = idx;
 
             mTitleText.setText(LIST_ITEM_TITLE[idx]);
-            ((LinearLayout.LayoutParams)mTitleText.getLayoutParams()).topMargin
-                    = idx != 0 ? sButtonGapI : 0;
 
             final int[] itemIndex = FAN_ITEM_INDEX[idx];
             final int cnt = itemIndex.length;  // 一共有这么多
