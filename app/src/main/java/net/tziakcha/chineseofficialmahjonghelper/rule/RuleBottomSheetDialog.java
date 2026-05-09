@@ -23,14 +23,14 @@ public class RuleBottomSheetDialog extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.rule_bottom_sheet_layout, container, false);
         contentView.findViewById(R.id.rbs_txt_fan).setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), RuleFanMainActivity.class);
+            Intent intent = new Intent(getActivity(), RuleFanListActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
 
             dismiss();
         });
         contentView.findViewById(R.id.rbs_txt_principle).setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), RulePrincipleMainActivity.class);
+            Intent intent = new Intent(getActivity(), RulePrincipleListActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
 

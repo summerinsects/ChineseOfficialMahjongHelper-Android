@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -14,35 +13,35 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.TextViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.tziakcha.chineseofficialmahjonghelper.Mahjong;
 import net.tziakcha.chineseofficialmahjonghelper.R;
-import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFragment;
+import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFullScreenDialog;
 
-public class RuleFanListFragment extends Fragment {
+public class RuleFanListActivity extends AppCompatActivity {
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.common_recycler_layout, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        View contentView = View.inflate(this, R.layout.common_recycler_layout, null);
+        setContentView(contentView);
 
         ((TextView)contentView.findViewById(R.id.ab_txt)).setText("国标麻将番种表");
 
         contentView.findViewById(R.id.ab_l_btn).setOnClickListener(view ->
-                requireActivity().getOnBackPressedDispatcher().onBackPressed());
+                getOnBackPressedDispatcher().onBackPressed());
 
         contentView.findViewById(R.id.ab_r_btn).setVisibility(View.GONE);
 
         RecyclerView rv = contentView.findViewById(R.id.crl_rv);
-        rv.setLayoutManager(new LinearLayoutManager(requireContext()));
+        rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new FanRecyclerViewAdapter());
-
-        return contentView;
     }
 
     private static final String[] LIST_ITEM_TITLE = {
@@ -163,12 +162,8 @@ public class RuleFanListFragment extends Fragment {
     private void onFanClick(int itemIndex, int which) {
         if (itemIndex != -1) {
             int fan = FAN_ITEM_INDEX[itemIndex][which];
-            CommonWebFragment fragment = CommonWebFragment.newInstance(Mahjong.FAN_NAME[fan],
-                    "file:///android_asset/www/rule/fan/" + fan + ".html");
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.cml_fl_root, fragment)
-                    .addToBackStack(null)
-                    .commit();
+            new CommonWebFullScreenDialog(this, Mahjong.FAN_NAME[fan],
+                    "file:///android_asset/www/rule/fan/" + fan + ".html").show();
         }
     }
 

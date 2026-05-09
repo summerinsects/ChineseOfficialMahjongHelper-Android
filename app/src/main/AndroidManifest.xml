@@ -32,10 +32,10 @@
         <activity android:name=".record.RecordMainActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".rule.RuleFanMainActivity"
+        <activity android:name=".rule.RuleFanListActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".rule.RulePrincipleMainActivity"
+        <activity android:name=".rule.RulePrincipleListActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".rule.RuleSupplementActivity"
@@ -50,7 +50,7 @@
         <activity android:name=".training.TrainingDiscardActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".other.OtherCompetitionMainActivity"
+        <activity android:name=".other.OtherCompetitionListActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity android:name=".other.OtherEntertainmentActivity"

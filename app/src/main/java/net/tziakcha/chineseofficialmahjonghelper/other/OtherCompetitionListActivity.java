@@ -12,14 +12,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.TextViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.tziakcha.chineseofficialmahjonghelper.R;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonConfirmDialog;
-import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFragment;
+import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFullScreenDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.LoadingDialog;
 
 import org.json.JSONArray;
@@ -34,7 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class OtherCompetitionListFragment extends Fragment {
+public class OtherCompetitionListActivity extends AppCompatActivity {
 
     private static final int TIME_ACCURACY_UNDETERMINED = 0;
     private static final int TIME_ACCURACY_MONTHS = 1;
@@ -52,20 +52,22 @@ public class OtherCompetitionListFragment extends Fragment {
     private final ArrayList<CompetitionInfo> mCompetitions = new ArrayList<>();
     private final CompetitionRecyclerAdapter mCompetitionRecyclerAdapter = new CompetitionRecyclerAdapter();
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View contentView = inflater.inflate(R.layout.common_recycler_layout, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        View contentView = View.inflate(this, R.layout.common_recycler_layout, null);
+        setContentView(contentView);
 
         ((TextView)contentView.findViewById(R.id.ab_txt)).setText("近期赛事");
 
         contentView.findViewById(R.id.ab_l_btn).setOnClickListener(view ->
-                requireActivity().getOnBackPressedDispatcher().onBackPressed());
+                getOnBackPressedDispatcher().onBackPressed());
 
         contentView.findViewById(R.id.ab_r_btn).setVisibility(View.GONE);
 
         RecyclerView rv = contentView.findViewById(R.id.crl_rv);
-        rv.setLayoutManager(new LinearLayoutManager(requireContext()));
+        rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(mCompetitionRecyclerAdapter);
 
         mEmptyText = contentView.findViewById(R.id.crl_txt_empty);
@@ -74,14 +76,12 @@ public class OtherCompetitionListFragment extends Fragment {
         if (mCompetitions.isEmpty()) {
             requestCompetitions();
         }
-
-        return contentView;
     }
 
     @SuppressLint("NotifyDataSetChanged")
     private void requestCompetitions() {
         LoadingDialog loadingDialog = new LoadingDialog();
-        loadingDialog.show(getChildFragmentManager(), "LoadingDialog");
+        loadingDialog.show(getSupportFragmentManager(), "LoadingDialog");
         new Thread(() -> {
             try {
                 URL url = new URL("https://gitee.com/summerinsects/ChineseOfficialMahjongHelperDataSource/raw/master/competition/latest.json");
@@ -102,7 +102,7 @@ public class OtherCompetitionListFragment extends Fragment {
 
                     if (!str.isEmpty()) {
                         ArrayList<CompetitionInfo> competitions = parseResponse(str);
-                        requireActivity().runOnUiThread(() -> {
+                        runOnUiThread(() -> {
                             mCompetitions.clear();
                             mCompetitions.addAll(competitions);
                             mCompetitionRecyclerAdapter.notifyDataSetChanged();
@@ -110,7 +110,7 @@ public class OtherCompetitionListFragment extends Fragment {
                             loadingDialog.dismiss();
                         });
                     } else {
-                        requireActivity().runOnUiThread(() -> {
+                        runOnUiThread(() -> {
                             mEmptyText.setVisibility(View.VISIBLE);
                             loadingDialog.dismiss();
                         });
@@ -121,10 +121,10 @@ public class OtherCompetitionListFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
 
-                requireActivity().runOnUiThread(() -> {
+                runOnUiThread(() -> {
                     loadingDialog.dismiss();
 
-                    new CommonConfirmDialog(requireContext(), "提示", "获取近期赛事失败",
+                    new CommonConfirmDialog(this, "提示", "获取近期赛事失败",
                             "重试", "取消", this::requestCompetitions).show();
                 });
             }
@@ -134,11 +134,7 @@ public class OtherCompetitionListFragment extends Fragment {
     private void openDetail(int idx) {
         final CompetitionInfo competition = mCompetitions.get(idx);
         if (competition.url != null && !competition.url.isEmpty()) {
-            CommonWebFragment fragment = CommonWebFragment.newInstance(competition.name, competition.url);
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.cml_fl_root, fragment)
-                    .addToBackStack(null)
-                    .commit();
+            new CommonWebFullScreenDialog(this, competition.name, competition.url).show();
         }
     }
 

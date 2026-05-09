@@ -23,7 +23,7 @@ public class OtherBottomSheetDialog extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.other_bottom_sheet_layout, container, false);
         contentView.findViewById(R.id.obs_txt_competition).setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), OtherCompetitionMainActivity.class);
+            Intent intent = new Intent(getActivity(), OtherCompetitionListActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
 
