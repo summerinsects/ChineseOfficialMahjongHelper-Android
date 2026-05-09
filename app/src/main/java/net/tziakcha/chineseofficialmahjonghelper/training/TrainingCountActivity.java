@@ -295,7 +295,6 @@ public class TrainingCountActivity extends AppCompatActivity {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         final int dp5 = getResources().getDimensionPixelSize(R.dimen.dp5);
         final int lineHeight = getResources().getDimensionPixelSize(R.dimen.dp28);
-        final int resultAreaWidth = metrics.widthPixels - dp5 * 2;
 
         final int dp12 = getResources().getDimensionPixelSize(R.dimen.dp12);
         final int dp18 = getResources().getDimensionPixelSize(R.dimen.dp18);
@@ -327,9 +326,9 @@ public class TrainingCountActivity extends AppCompatActivity {
                     dp12, dp18, 2, TypedValue.COMPLEX_UNIT_PX);
             textView.setTextColor(textColor);
             textView.setText(str);
-            textView.setPadding(0, 0, 0, 0);
-            mlp = new ViewGroup.MarginLayoutParams(resultAreaWidth / 2 - dp5 * 2, lineHeight);
-            mlp.leftMargin = (cnt & 1) == 0 ? dp5 : resultAreaWidth / 2;
+            textView.setPadding(dp5, 0, dp5, 0);
+            mlp = new ViewGroup.MarginLayoutParams(metrics.widthPixels / 2, lineHeight);
+            mlp.leftMargin = (cnt & 1) == 0 ? 0 : metrics.widthPixels / 2;
             mlp.topMargin = (cnt >> 1) * lineHeight;
             textView.setLayoutParams(mlp);
             root.addView(textView);
@@ -341,9 +340,8 @@ public class TrainingCountActivity extends AppCompatActivity {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp18);
         textView.setTextColor(ContextCompat.getColor(this, R.color.text_1));
         textView.setText("总计：" + value + "番");
-        textView.setPadding(0, 0, 0, 0);
+        textView.setPadding(dp5, 0, dp5, 0);
         mlp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        mlp.leftMargin = dp5;
         mlp.topMargin = ((cnt >> 1) + (cnt & 1)) * lineHeight + dp5;
         textView.setLayoutParams(mlp);
         root.addView(textView);

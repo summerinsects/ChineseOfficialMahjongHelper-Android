@@ -162,8 +162,10 @@ public class RuleFanListActivity extends AppCompatActivity {
     private void onFanClick(int itemIndex, int which) {
         if (itemIndex != -1) {
             int fan = FAN_ITEM_INDEX[itemIndex][which];
+            int idx = (fan != Mahjong.PURE_SHIFTED_CHOWS_2 && fan != Mahjong.FOUR_PURE_SHIFTED_CHOWS_2)
+                    ? fan : fan - 1;
             new CommonWebFullScreenDialog(this, Mahjong.FAN_NAME[fan],
-                    "file:///android_asset/www/rule/fan/" + fan + ".html").show();
+                    "file:///android_asset/www/rule/fan/" + idx + ".html").show();
         }
     }
 

@@ -25,6 +25,7 @@ import net.tziakcha.chineseofficialmahjonghelper.Mahjong;
 import net.tziakcha.chineseofficialmahjonghelper.R;
 import net.tziakcha.chineseofficialmahjonghelper.Utils;
 import net.tziakcha.chineseofficialmahjonghelper.widget.CommonTextDialog;
+import net.tziakcha.chineseofficialmahjonghelper.widget.CommonWebFullScreenDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.InputTileDialog;
 import net.tziakcha.chineseofficialmahjonghelper.widget.TilePickerLayout;
 
@@ -197,11 +198,10 @@ public class FanCalculatorActivity extends AppCompatActivity {
         mFanAreaView.scrollTo(0, 0);
     }
 
-    static RelativeLayout createFanResultLayout(Context context, final int[] fan) {
+    private RelativeLayout createFanResultLayout(Context context, final int[] fan) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         final int dp5 = context.getResources().getDimensionPixelSize(R.dimen.dp5);
         final int lineHeight = context.getResources().getDimensionPixelSize(R.dimen.dp28);
-        final int resultAreaWidth = metrics.widthPixels - dp5 * 2;
 
         final int dp12 = context.getResources().getDimensionPixelSize(R.dimen.dp12);
         final int dp18 = context.getResources().getDimensionPixelSize(R.dimen.dp18);
@@ -238,13 +238,22 @@ public class FanCalculatorActivity extends AppCompatActivity {
                     dp12, dp18, 2, TypedValue.COMPLEX_UNIT_PX);
             textView.setTextColor(textColor);
             textView.setText(str);
-            textView.setPadding(0, 0, 0, 0);
-            mlp = new ViewGroup.MarginLayoutParams(resultAreaWidth / 2 - dp5 * 2, lineHeight);
-            mlp.leftMargin = (cnt & 1) == 0 ? 0 : resultAreaWidth / 2;
+            textView.setPadding(dp5, 0, dp5, 0);
+            mlp = new ViewGroup.MarginLayoutParams(metrics.widthPixels / 2, lineHeight);
+            mlp.leftMargin = (cnt & 1) == 0 ? 0 : metrics.widthPixels / 2;
             mlp.topMargin = (cnt >> 1) * lineHeight;
             textView.setLayoutParams(mlp);
             root.addView(textView);
             //textView.setBackgroundColor(Color.GREEN);  // 测试范围用
+
+            int finalI = i;
+            textView.setOnClickListener(view -> showFanDefinition(finalI));
+
+            TypedValue typedValue = new TypedValue();
+            if (getTheme().resolveAttribute(android.R.attr.selectableItemBackground,
+                    typedValue, true)) {
+                textView.setBackgroundResource(typedValue.resourceId);
+            }
 
             ++cnt;
         }
@@ -253,7 +262,7 @@ public class FanCalculatorActivity extends AppCompatActivity {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp18);
         textView.setTextColor(ContextCompat.getColor(context, R.color.text_1));
         textView.setText("总计：" + value + "番");
-        textView.setPadding(0, 0, 0, 0);
+        textView.setPadding(dp5, 0, dp5, 0);
         mlp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mlp.topMargin = ((cnt >> 1) + (cnt & 1)) * lineHeight;
         textView.setLayoutParams(mlp);
@@ -263,7 +272,7 @@ public class FanCalculatorActivity extends AppCompatActivity {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp12);
         textView.setTextColor(ContextCompat.getColor(context, R.color.theme_main));
         textView.setText("点击番种名可查看番种介绍");
-        textView.setPadding(0, 0, 0, 0);
+        textView.setPadding(dp5, 0, dp5, 0);
         mlp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mlp.topMargin = ((cnt >> 1) + (cnt & 1) + 1) * lineHeight;
         textView.setLayoutParams(mlp);
@@ -446,6 +455,13 @@ public class FanCalculatorActivity extends AppCompatActivity {
 
     private void showRule() {
         new FanCalculatorRuleDialog(this).show();
+    }
+
+    private void showFanDefinition(int fan) {
+        int idx = (fan != Mahjong.PURE_SHIFTED_CHOWS_2 && fan != Mahjong.FOUR_PURE_SHIFTED_CHOWS_2)
+                ? fan : fan - 1;
+        new CommonWebFullScreenDialog(this, Mahjong.FAN_NAME[fan],
+                "file:///android_asset/www/rule/fan/" + idx + ".html").show();
     }
 
 }
