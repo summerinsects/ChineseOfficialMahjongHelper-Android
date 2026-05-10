@@ -12,9 +12,10 @@
 
         <ImageView
             android:id="@+id/ll_img"
-            android:layout_width="@dimen/dp48"
-            android:layout_height="@dimen/dp48"
-            android:background="@drawable/ic_spinner"
+            android:layout_width="@dimen/dp64"
+            android:layout_height="@dimen/dp64"
+            android:src="@drawable/ic_loading"
+            app:tint="@color/text_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

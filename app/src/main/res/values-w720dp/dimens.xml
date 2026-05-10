@@ -23,6 +23,7 @@
     <dimen name="dp50">100dp</dimen>
     <dimen name="dp55">110dp</dimen>
     <dimen name="dp60">120dp</dimen>
+    <dimen name="dp64">128dp</dimen>
     <dimen name="dp65">130dp</dimen>
     <dimen name="dp70">140dp</dimen>
     <dimen name="dp75">150dp</dimen>

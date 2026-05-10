@@ -23,6 +23,7 @@
     <dimen name="dp50">75dp</dimen>
     <dimen name="dp55">82.5dp</dimen>
     <dimen name="dp60">90dp</dimen>
+    <dimen name="dp64">96dp</dimen>
     <dimen name="dp65">97.5dp</dimen>
     <dimen name="dp70">105dp</dimen>
     <dimen name="dp75">112.5dp</dimen>
