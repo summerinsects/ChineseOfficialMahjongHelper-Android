@@ -945,7 +945,7 @@ public class RecordSheetFragment extends Fragment {
         mTimeText.setText(str.toString());
     }
 
-    private static final String[] FAN_SHORT_NAME = {
+    private static final String[] FAN2_SHORT_NAME = {
             "箭刻", "圈风", "门风", "门清", "平和", "四归", "双同", "双暗", "暗杠", "断幺"
     };
 
@@ -990,24 +990,51 @@ public class RecordSheetFragment extends Fragment {
 
         int fan_minor2 = detail.fan_minor2;
         if (fan_minor2 != 0) {
-            if ((fan_minor2
-                    & (1 << ((Mahjong.CONCEALED_HAND - Mahjong.DRAGON_PUNG) << 1)
-                    | 1 << ((Mahjong.ALL_SIMPLES - Mahjong.DRAGON_PUNG) << 1)
-                    | 1 << ((Mahjong.ALL_CHOWS - Mahjong.DRAGON_PUNG) << 1))) != 0) {
-                return "门断平凑番";
-            }
-
-            StringBuilder str = new StringBuilder();
-            int cnt = 0;
-            for (int i = 0; i < 10 && cnt < 2; ++i) {
-                if ((fan_minor2 & (1 << (i << 1))) != 0) {
-                    ++cnt;
-                    str.append(FAN_SHORT_NAME[i]);
+            int cnt = 0, category = 0;  // 个数、种数
+            int[] fan2Table = new int[10];  // 各个2番个数
+            for (int i = 0; i < 10; ++i) {
+                int n = (fan_minor2 >> (i << 1)) & 0x3;
+                if (n != 0) {
+                    fan2Table[i] = n;
+                    cnt += n;
+                    ++category;
                 }
             }
-            if (cnt != 0) {
-                str.append("凑番");
-                return str.toString();
+
+            if (cnt == 3) {  // 3个：门断平特殊对待
+                if (fan2Table[Mahjong.CONCEALED_HAND - Mahjong.DRAGON_PUNG] == 1
+                        && fan2Table[Mahjong.ALL_SIMPLES - Mahjong.DRAGON_PUNG] == 1
+                        && fan2Table[Mahjong.ALL_CHOWS - Mahjong.DRAGON_PUNG] == 1) {
+                    return "门断平";
+                } else {
+                    return "2\u00d73";
+                }
+            } else if (cnt == 2) {  // 2个：不同的组合显示；相同显示×2
+                if (category == 2) {
+                    StringBuilder str = new StringBuilder();
+                    int n = 0;
+                    for (int i = 0; i < 10 && n < 2; ++i) {
+                        if (fan2Table[i] != 0) {
+                            ++n;
+                            str.append(FAN2_SHORT_NAME[i]);
+                        }
+                    }
+                    return str.toString();
+                } else {
+                    for (int i = 0; i < 10; ++i) {
+                        if (fan2Table[i] != 0) {
+                            return FAN2_SHORT_NAME[i] + "\u00d72";
+                        }
+                    }
+                }
+            } else if (cnt == 1) {  // 1个
+                for (int i = 0; i < 10; ++i) {
+                    if (fan2Table[i] != 0) {
+                        return FAN2_SHORT_NAME[i] + "凑番";
+                    }
+                }
+            } else {  // 超过3个显示为：2×N
+                return "2\u00d7" + cnt;
             }
         }
 
