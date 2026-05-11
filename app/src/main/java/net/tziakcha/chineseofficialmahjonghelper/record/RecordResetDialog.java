@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import net.tziakcha.chineseofficialmahjonghelper.R;
+import net.tziakcha.chineseofficialmahjonghelper.Utils;
 
 public class RecordResetDialog extends AlertDialog {
     public interface OnSubmitListener {
@@ -49,7 +50,11 @@ public class RecordResetDialog extends AlertDialog {
             dismiss();
         });
 
+        final int dp28 = context.getResources().getDimensionPixelSize(R.dimen.dp28);
+        Utils.adaptCompoundButton(contentView.findViewById(R.id.rrl_rb_abandon), dp28);
+
         mSaveRadio = contentView.findViewById(R.id.rrl_rb_save);
+        Utils.adaptCompoundButton(mSaveRadio, dp28);
 
         setContentView(contentView);
 

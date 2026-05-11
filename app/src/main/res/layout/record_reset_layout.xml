@@ -47,6 +47,7 @@
                 android:text="保存，将未打完的盘数标记为超时" />
 
             <RadioButton
+                android:id="@+id/rrl_rb_abandon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_1"
