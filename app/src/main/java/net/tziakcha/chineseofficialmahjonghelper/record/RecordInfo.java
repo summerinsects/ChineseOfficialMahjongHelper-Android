@@ -185,9 +185,9 @@ public final class RecordInfo {
     }
 
     private static final String[] FRACTION_TEXT = {
-            "", "\u00B9\u2044\u2081\u2082", "\u2159", "\u00bc",
-            "\u2153", "\u2075\u2044\u2081\u2082", "\u00bd", "\u2077\u2044\u2081\u2082",
-            "\u2154", "\u00be", "\u215a", "\u00B9\u00B9\u2044\u2081\u2082"
+            "", "\u0020\u00B9\u2044\u2081\u2082", "\u2159", "\u00bc",
+            "\u2153", "\u0020\u2075\u2044\u2081\u2082", "\u00bd", "\u0020\u2077\u2044\u2081\u2082",
+            "\u2154", "\u00be", "\u215a", "\u0020\u00B9\u00B9\u2044\u2081\u2082"
     };
 
     public static String normStringFrom12(int norm) {

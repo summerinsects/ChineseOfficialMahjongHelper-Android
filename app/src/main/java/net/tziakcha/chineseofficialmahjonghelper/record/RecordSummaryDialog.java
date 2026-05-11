@@ -184,17 +184,17 @@ public class RecordSummaryDialog extends AlertDialog {
         StringBuilder str = null;
         if (mSelections[index] == -1) {
             if (which != -1) {
-                mSelections[index] = which;
                 ++mSelectionCount;
                 str = new StringBuilder();
             }
         } else {
             if (which == -1) {
-                mSelections[index] = -1;
                 --mSelectionCount;
                 str = new StringBuilder();
             }
         }
+
+        mSelections[index] = which;
 
         if (str != null) {
             str.append(mSelectionCount).append('/').append(mSelections.length);
