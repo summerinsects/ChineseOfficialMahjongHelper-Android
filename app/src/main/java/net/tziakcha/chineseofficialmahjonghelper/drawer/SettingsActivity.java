@@ -31,18 +31,27 @@ public class SettingsActivity extends AppCompatActivity {
 
         contentView.findViewById(R.id.ab_r_btn).setVisibility(View.GONE);
 
-        CheckBox checkBox = contentView.findViewById(R.id.sl_record_cb_pay);
-        checkBox.setChecked(getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
-                .getBoolean("MorePayment", false));
-        checkBox.setOnCheckedChangeListener((view, checked) ->
-                getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
-                        .edit().putBoolean("MorePayment", checked).apply());
-        Utils.adaptCompoundButton(checkBox, getResources().getDimensionPixelSize(R.dimen.dp28));
+        associateCell(contentView.findViewById(R.id.sl_record_cb_fold),
+                "FoldSheetButton",
+                contentView.findViewById(R.id.sl_record_rl_fold));
 
-        contentView.findViewById(R.id.sl_record_rl_pay).setOnClickListener(view -> checkBox.performClick());
+        associateCell(contentView.findViewById(R.id.sl_record_cb_pay),
+                "MorePayment",
+                contentView.findViewById(R.id.sl_record_rl_pay));
 
         contentView.findViewById(R.id.sl_train_txt_discard).setOnClickListener(view -> resetTrainDiscard());
         contentView.findViewById(R.id.sl_train_txt_count).setOnClickListener(view -> resetTrainCount());
+    }
+
+    private void associateCell(final CheckBox checkBox, final String key, final View root) {
+        checkBox.setChecked(getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                .getBoolean(key, false));
+        checkBox.setOnCheckedChangeListener((view, checked) ->
+                getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                        .edit().putBoolean(key, checked).apply());
+        Utils.adaptCompoundButton(checkBox, getResources().getDimensionPixelSize(R.dimen.dp28));
+
+        root.setOnClickListener(view -> checkBox.performClick());
     }
 
     private void resetTrainDiscard() {

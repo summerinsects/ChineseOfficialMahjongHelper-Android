@@ -31,19 +31,55 @@
                 android:text="计分设置" />
 
             <RelativeLayout
-                android:id="@+id/sl_record_rl_pay"
+                android:id="@+id/sl_record_rl_fold"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:paddingHorizontal="@dimen/dp10"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp10"
                 android:background="?android:attr/selectableItemBackground">
                 <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp25"
+                    android:layout_marginEnd="@dimen/dp40"
+                    android:textColor="@color/text_2"
+                    android:textSize="@dimen/dp16"
+                    android:text="收起计分器表格顶部按钮" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp25"
+                    android:layout_marginEnd="@dimen/dp40"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/dp12"
+                    android:text="如果布局空间不足，则会忽略此选项，强制收起" />
+                <CheckBox
+                    android:id="@+id/sl_record_cb_fold"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/sl_record_rl_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp10"
+                android:background="?android:attr/selectableItemBackground">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp25"
                     android:layout_marginEnd="@dimen/dp40"
                     android:textColor="@color/text_2"
                     android:textSize="@dimen/dp16"
                     android:text="启用坊间试验性授受制" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp25"
+                    android:layout_marginEnd="@dimen/dp40"
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/dp12"
+                    android:text="国标麻将常被诟病自摸番3，试用坊间发明的其他授受制" />
                 <CheckBox
                     android:id="@+id/sl_record_cb_pay"
                     android:layout_width="wrap_content"
@@ -70,8 +106,8 @@
             <TextView
                 android:id="@+id/sl_train_txt_discard"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:paddingHorizontal="@dimen/dp10"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/text_2"
@@ -81,8 +117,8 @@
             <TextView
                 android:id="@+id/sl_train_txt_count"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
-                android:paddingHorizontal="@dimen/dp10"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp10"
                 android:gravity="center_vertical"
                 android:background="?android:attr/selectableItemBackground"
                 android:textColor="@color/text_2"

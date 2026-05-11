@@ -128,26 +128,22 @@ public class RecordSheetFragment extends Fragment {
         rlSheet.getLayoutParams().height = sheetHeight;
 
         // 是否有空间放四个按钮
-        final int dp28 = context.getResources().getDimensionPixelSize(R.dimen.dp28);
-        final int dp5 = context.getResources().getDimensionPixelSize(R.dimen.dp5);
-        if (maxSheetHeight - sheetHeight >= dp28 + dp5) {
-            View button;
+        int dp38;
+        if (!context.getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                .getBoolean("FoldSheetButton", false)
+                && maxSheetHeight - sheetHeight >= (dp38 = context.getResources().getDimensionPixelSize(R.dimen.dp38))) {
 
-            button = contentView.findViewById(R.id.rsl_btn_chase);
-            button.setVisibility(View.VISIBLE);
-            button.setOnClickListener(view -> onChaseButton());
+            View rootView = contentView.findViewById(R.id.rsl_cl_root);
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams)rootView.getLayoutParams();
+            mlp.topMargin = Math.min((maxSheetHeight - sheetHeight - dp38) / 2,
+                    context.getResources().getDimensionPixelSize(R.dimen.dp10));
 
-            button = contentView.findViewById(R.id.rsl_btn_clear);
-            button.setVisibility(View.VISIBLE);
-            button.setOnClickListener(view -> onResetButton());
+            rootView.setVisibility(View.VISIBLE);
 
-            button = contentView.findViewById(R.id.rsl_btn_history);
-            button.setVisibility(View.VISIBLE);
-            button.setOnClickListener(view -> onHistoryButton());
-
-            button = contentView.findViewById(R.id.rsl_btn_edit);
-            button.setVisibility(View.VISIBLE);
-            button.setOnClickListener(view -> onEditButton());
+            contentView.findViewById(R.id.rsl_btn_chase).setOnClickListener(view -> onChaseButton());
+            contentView.findViewById(R.id.rsl_btn_clear).setOnClickListener(view -> onResetButton());
+            contentView.findViewById(R.id.rsl_btn_history).setOnClickListener(view -> onHistoryButton());
+            contentView.findViewById(R.id.rsl_btn_edit).setOnClickListener(view -> onEditButton());
 
             View rightButton = contentView.findViewById(R.id.ab_r_btn);
             mPopupWindow = Utils.createPopupMenu(context, rightButton, new String[]{
@@ -163,10 +159,11 @@ public class RecordSheetFragment extends Fragment {
                 mPopupWindow.dismiss();
             });
         } else {
-            contentView.findViewById(R.id.rsl_btn_chase).setVisibility(View.GONE);
-            contentView.findViewById(R.id.rsl_btn_clear).setVisibility(View.GONE);
-            contentView.findViewById(R.id.rsl_btn_history).setVisibility(View.GONE);
-            contentView.findViewById(R.id.rsl_btn_edit).setVisibility(View.GONE);
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams)rlSheet.getLayoutParams();
+            mlp.topMargin = Math.min((maxSheetHeight - sheetHeight) / 2,
+                    context.getResources().getDimensionPixelSize(R.dimen.dp10));
+
+            contentView.findViewById(R.id.rsl_cl_root).setVisibility(View.GONE);
 
             View rightButton = contentView.findViewById(R.id.ab_r_btn);
             mPopupWindow = Utils.createPopupMenu(context, rightButton, new String[]{

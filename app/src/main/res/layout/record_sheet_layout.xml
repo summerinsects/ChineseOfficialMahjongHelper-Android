@@ -18,12 +18,12 @@
         android:layout_marginVertical="@dimen/dp5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rsl_cl_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/dp5"
+            android:layout_marginHorizontal="@dimen/dp5"
             android:layout_marginBottom="@dimen/dp5">
             <Button
-                android:visibility="gone"
                 android:id="@+id/rsl_btn_chase"
                 android:layout_width="@dimen/dp75"
                 android:layout_height="@dimen/dp28"
@@ -37,7 +37,6 @@
                 android:textSize="@dimen/dp16"
                 android:text="追分策略" />
             <Button
-                android:visibility="gone"
                 android:id="@+id/rsl_btn_clear"
                 android:layout_width="@dimen/dp75"
                 android:layout_height="@dimen/dp28"
@@ -50,7 +49,6 @@
                 android:textSize="@dimen/dp16"
                 android:text="清空表格" />
             <Button
-                android:visibility="gone"
                 android:id="@+id/rsl_btn_history"
                 android:layout_width="@dimen/dp75"
                 android:layout_height="@dimen/dp28"
@@ -63,7 +61,6 @@
                 android:textSize="@dimen/dp16"
                 android:text="历史记录" />
             <Button
-                android:visibility="gone"
                 android:id="@+id/rsl_btn_edit"
                 android:layout_width="@dimen/dp75"
                 android:layout_height="@dimen/dp28"
