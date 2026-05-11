@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
@@ -56,10 +55,8 @@ public class CommonWebFullScreenDialog extends AlertDialog {
             window.setBackgroundDrawableResource(android.R.color.transparent);
             window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            WindowManager.LayoutParams lp = window.getAttributes();
-            lp.dimAmount = 0.0f;
-            window.setAttributes(lp);
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            window.setDimAmount(0.0f);
 
             // NOTE: 部分手机状态栏会黑变，需要通过以下代码改变
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);

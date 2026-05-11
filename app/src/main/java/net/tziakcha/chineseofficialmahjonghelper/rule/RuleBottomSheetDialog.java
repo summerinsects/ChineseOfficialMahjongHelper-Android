@@ -53,11 +53,9 @@ public class RuleBottomSheetDialog extends BottomSheetDialogFragment {
         if (dialog != null) {
             Window window = dialog.getWindow();
             if (window != null) {
-                WindowManager.LayoutParams params = window.getAttributes();
-                params.width = WindowManager.LayoutParams.MATCH_PARENT;
-                params.height = (int)(getResources().getDisplayMetrics().heightPixels * 0.7);
-                params.gravity = Gravity.BOTTOM;
-                window.setAttributes(params);
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                        getResources().getDisplayMetrics().heightPixels * 7 / 10);
+                window.setGravity(Gravity.BOTTOM);
             }
         }
     }
