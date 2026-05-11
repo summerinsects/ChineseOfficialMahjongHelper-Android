@@ -45,13 +45,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp5"
-            android:layout_marginHorizontal="@dimen/dp5">
+            android:layout_height="wrap_content">
             <ImageButton
                 android:id="@+id/dpl_ib_l"
                 android:layout_width="@dimen/dp25"
                 android:layout_height="@dimen/dp25"
+                android:layout_marginStart="@dimen/dp5"
+                android:layout_marginVertical="@dimen/dp5"
                 android:stateListAnimator="@animator/button_scale_animator"
                 android:background="@drawable/ic_arrow_left"
                 android:backgroundTint="@color/theme_main" />
@@ -59,6 +59,7 @@
                 android:id="@+id/dpl_btn_tg"
                 android:layout_width="@dimen/dp100"
                 android:layout_height="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp5"
                 android:layout_marginHorizontal="@dimen/dp5"
                 android:layout_toEndOf="@+id/dpl_ib_l"
                 android:background="@drawable/btn_square_toggle"
@@ -68,6 +69,7 @@
                 android:id="@+id/dpl_ib_r"
                 android:layout_width="@dimen/dp25"
                 android:layout_height="@dimen/dp25"
+                android:layout_marginVertical="@dimen/dp5"
                 android:layout_toEndOf="@+id/dpl_btn_tg"
                 android:stateListAnimator="@animator/button_scale_animator"
                 android:background="@drawable/ic_arrow_left"
@@ -78,6 +80,8 @@
                 android:id="@+id/dpl_btn_today"
                 android:layout_width="@dimen/dp75"
                 android:layout_height="@dimen/dp25"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_marginVertical="@dimen/dp5"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/btn_square"
                 android:textColor="#fff"
@@ -87,7 +91,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp280"
+            android:layout_height="@dimen/dp290"
             android:layout_marginTop="@dimen/dp5"
             android:layout_marginHorizontal="@dimen/dp5"
             android:layout_marginBottom="@dimen/dp10">
@@ -268,7 +272,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -279,7 +283,7 @@
                         android:text="1月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -290,7 +294,7 @@
                         android:text="2月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -301,7 +305,7 @@
                         android:text="3月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -320,7 +324,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -331,7 +335,7 @@
                         android:text="5月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -342,7 +346,7 @@
                         android:text="6月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -353,7 +357,7 @@
                         android:text="7月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -372,7 +376,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -383,7 +387,7 @@
                         android:text="9月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -394,7 +398,7 @@
                         android:text="10月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -405,7 +409,7 @@
                         android:text="11月" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -433,7 +437,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -443,7 +447,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -453,7 +457,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -463,7 +467,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -481,7 +485,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -491,7 +495,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -501,7 +505,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -511,7 +515,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -529,7 +533,7 @@
                     android:orientation="horizontal">
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"
@@ -539,7 +543,7 @@
                         android:textSize="@dimen/dp16" />
                     <CheckBox
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/dp65"
+                        android:layout_height="@dimen/dp75"
                         android:layout_weight="1"
                         android:layout_marginHorizontal="@dimen/dp1"
                         android:gravity="center"

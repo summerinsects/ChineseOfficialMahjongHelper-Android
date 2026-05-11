@@ -19,6 +19,7 @@
     <dimen name="dp35">52.5dp</dimen>
     <dimen name="dp38">57dp</dimen>
     <dimen name="dp40">60dp</dimen>
+    <dimen name="dp42">63dp</dimen>
     <dimen name="dp48">72dp</dimen>
     <dimen name="dp50">75dp</dimen>
     <dimen name="dp55">82.5dp</dimen>
@@ -32,6 +33,6 @@
     <dimen name="dp120">180dp</dimen>
     <dimen name="dp150">225dp</dimen>
     <dimen name="dp155">232.5dp</dimen>
-    <dimen name="dp280">420dp</dimen>
+    <dimen name="dp290">435dp</dimen>
     <dimen name="dp320">480dp</dimen>
 </resources>

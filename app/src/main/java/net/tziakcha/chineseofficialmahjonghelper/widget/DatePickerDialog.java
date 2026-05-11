@@ -242,7 +242,7 @@ public class DatePickerDialog extends AlertDialog {
             new Festival(3, "建党节", 2, 7, 1, 1938),
             new Festival(3, "建军节", 2, 8, 1, 1933),
             new Festival(2, "抗战胜利", 2, 9, 3, 1945),
-            new Festival(3, "教师节", 2, 9, 9, 1985),
+            new Festival(3, "教师节", 2, 9, 10, 1985),
             new Festival(2, "烈士纪念日", 2, 9, 30, 2014),
             new Festival(3, "国庆节", 2, 10, 1, 1949),
             new Festival(2, "感恩节", 2, 11, 0, 0, 4, 4),
@@ -252,28 +252,26 @@ public class DatePickerDialog extends AlertDialog {
     };
 
 
-    // 春社：立春后五戊
-    // 设首戊为D号，五戊为：D+50-28=D+22（平年）；D+50-29=D+21（闰年），有落入4月的可能
-    private static void getSpringSocial(ArrayList<Festival> festivals, int y, int m, boolean leap) {
-        int d = CalendarUtils.Gregorian_GetSolarTerm(y, 2);
-        int s = CalendarUtils.Gregorian_GetStemBranch(y, 2, d) % 10;  // 立春日天干
+    // 春社：立春后第五个戊日
+    // 设首个戊日为D号，五个戊日已经超过2月长度，其在3月的日期为：D+40-28=D+12（平年）；D+40-29=D+11（闰年）
+    // 立春最晚在2月5日，极端情况前一日（4日）为戊日，那么首个戊日在9天之后，
+    // 此种情况下，5+9+12=26，春社将在3月26日（例如1902年、1923年），不可能落入4月
+    private static void getSpringSocial(ArrayList<Festival> festivals, int y, boolean leap) {
+        int d = CalendarUtils.Gregorian_GetSolarTerm(y, 2);  // 立春日期
+        int s = CalendarUtils.Gregorian_GetStemBranch(y, 2, d) % 10;  // 立春当日天干
         d += (s <= 4 ? 4 : 14) - s;
-        d += (leap ? 21 : 22);
-        if ((m == 3 && d <= 31) || (m == 4 && d > 31)) {
-            festivals.add(new Festival(2, "春社", 2, m, d <= 31 ? d : d - 31));
-        }
+        festivals.add(new Festival(2, "春社", 2, 3, d + (leap ? 11 : 12)));
     }
 
     // 秋社：立秋后第五个戊日
-    // 设首戊为D号，五戊为：D+50-31=D+19，有落入10月的可能
-    private static void getAutumnSocial(ArrayList<Festival> festivals, int y, int m) {
-        int d = CalendarUtils.Gregorian_GetSolarTerm(y, 14);
-        int s = CalendarUtils.Gregorian_GetStemBranch(y, 8, d) % 10;  // 立秋日天干
+    // 设首个戊日为D号，五个戊日已经超过8月长度，其在9月的日期为：D+40-31=D+9
+    // 立秋最晚在8月9日，极端情况前一日（8日）为戊日，那么首个戊日在9天之后，
+    // 此种情况下，9+9+9=27，秋社将在9月27日（例如1903年），不可能落入10月
+    private static void getAutumnSocial(ArrayList<Festival> festivals, int y) {
+        int d = CalendarUtils.Gregorian_GetSolarTerm(y, 14);  // 立秋日期
+        int s = CalendarUtils.Gregorian_GetStemBranch(y, 8, d) % 10;  // 立秋当日天干
         d += (s <= 4 ? 4 : 14) - s;
-        d += 19;
-        if ((m == 9 && d <= 31) || (m == 10 && d > 31)) {
-            festivals.add(new Festival(2, "秋社", 2, m, d <= 31 ? d : d - 31));
-        }
+        festivals.add(new Festival(2, "秋社", 2, 9, d + 9));
     }
 
     private static void getFestivals(int y, int m, int mm, int dd, boolean l, ArrayList<Festival> festivals) {
@@ -325,7 +323,7 @@ public class DatePickerDialog extends AlertDialog {
                 festivals.add(new Festival(WINTER_99_PRIORITY, "六九", 2, 2, d));
                 festivals.add(new Festival(WINTER_99_PRIORITY, "七九", 2, 2, d + 9));
                 festivals.add(new Festival(WINTER_99_PRIORITY, "八九", 2, 2, d + 18));
-            break;
+                break;
             case 3:
                 // 3月有九九
                 // 设冬至为W号，九九为：W+9*8-31-31-28=w-18（平年）；W+9*8-31-31-29=W-19（闰年）
@@ -334,58 +332,52 @@ public class DatePickerDialog extends AlertDialog {
                 festivals.add(new Festival(WINTER_99_PRIORITY, "九九", 2, 3, d));
 
                 // 春社
-                getSpringSocial(festivals, y, 3, l);
+                getSpringSocial(festivals, y, l);
                 break;
             case 4:
                 // 寒食节，清明前一天
                 festivals.add(new Festival(2, "寒食节", 2, 4, solarTerms[0] - 1));
-
-                // 春社
-                getSpringSocial(festivals, y, 4, CalendarUtils.Gregorian_IsLeapYear(y));
                 break;
             case 6:
                 // 芒种见丙入梅
-                // 由于紫金山天文台目前只能查到2022年~2024年，这三年未出现的芒种当天是丙日的情况，只能根据2024出梅的算法猜测亦如此
+                // 由于紫金山天文台目前只能查到2022年~2026年，这5年均未出现的芒种当天是丙日的情况，只能根据2024出梅的算法猜测亦如此
                 d = solarTerms[0];
-                s = CalendarUtils.Gregorian_GetStemBranch(y, 6, d) % 10;  // 芒种日天干
+                s = CalendarUtils.Gregorian_GetStemBranch(y, 6, d) % 10;  // 芒种当日天干
                 festivals.add(new Festival(1, "入梅", 2, 6, d + (s > 2 ? 12 : 2) - s));
                 break;
             case 7:
                 // 7月有初伏、中伏
                 // 初伏：夏至后的第三个庚日；中伏：夏至后的第四个庚日
-                // 夏至最晚在6月22日，极端情况前一日（21日）为庚日，那么初伏将在7月21日，中伏在31日，不会落入8月
-                // 对于夏至当天是庚日的情况，紫金山天文台的算法是也算一次
+                // 设首个庚日为D号，三个庚日已经超过6月长度，其在7月的日期为：D+20-30=D-10
+                // 夏至最晚在6月22日，极端情况前一日（21日）为庚日，那么首个庚日在9天之后，
+                // 此种情况下，22+9-10=21，初伏将在7月21日，中伏在31日（例如1962年、1983年），不会落入8月
+                // 对于夏至当天是庚日的情况，紫金山天文台的算法是直接算首庚
                 // 例如2023年夏至是6月21日，干支为庚戌，7月11日为初伏，21日为中伏
                 d = CalendarUtils.Gregorian_GetSolarTerm(y, 11);  // 夏至日期
-                s = CalendarUtils.Gregorian_GetStemBranch(y, 6, d) % 10;  // 夏至日天干
-                if (s <= 6) {
-                    d -= 4 + s;
-                } else {
-                    d += 6 - s;
-                }
-                festivals.add(new Festival(DOG_DAYS_PRIORITY, "初伏", 2, 7, d));
-                festivals.add(new Festival(DOG_DAYS_PRIORITY, "中伏", 2, 7, d + 10));
+                s = CalendarUtils.Gregorian_GetStemBranch(y, 6, d) % 10;  // 夏至当日天干
+                d += (s <= 6 ? 6 : 16) - s;
+                festivals.add(new Festival(DOG_DAYS_PRIORITY, "初伏", 2, 7, d - 10));
+                festivals.add(new Festival(DOG_DAYS_PRIORITY, "中伏", 2, 7, d));
 
                 // 小暑见未出梅
                 // 对于小暑当天是未日的情况，紫金山天文台的算法是当天即出梅
                 // 例如2024年小暑是7月6日，干支为辛未
                 d = solarTerms[0];
-                s = CalendarUtils.Gregorian_GetStemBranch(y, 7, d) % 12;  // 小暑日地支
+                s = CalendarUtils.Gregorian_GetStemBranch(y, 7, d) % 12;  // 小暑当日地支
                 festivals.add(new Festival(1, "出梅", 2, 7, d + (s <= 7 ? 7 : 19) - s));
                 break;
             case 8:
                 // 8月有末伏
                 // 末伏：立秋后第一个庚日
                 // 对于立秋当天是庚日的情况，网络上主流的算法是直接算末伏，这里保持跟网上一致
-                // 由于紫金山天文台目前只能查到2022年~2024年，这三年未出现的立秋当天是庚日的情况，只能根据2023初伏的算法猜测亦如此
+                // 由于紫金山天文台目前只能查到2022年~2026年，这5年均未出现的立秋当天是庚日的情况，只能根据2023初伏的算法猜测亦如此
                 d = solarTerms[0];  // 立秋日期
-                s = CalendarUtils.Gregorian_GetStemBranch(y, 8, d) % 10;  // 立秋日天干
+                s = CalendarUtils.Gregorian_GetStemBranch(y, 8, d) % 10;  // 立秋当日天干
                 festivals.add(new Festival(DOG_DAYS_PRIORITY, "末伏", 2, 8,  d + (s <= 6 ? 6 : 16) - s));
                 break;
             case 9:
-            case 10:
                 // 秋社
-                getAutumnSocial(festivals, y, m);
+                getAutumnSocial(festivals, y);
                 break;
             case 12:
                 // 冬至日当天就是一九第1天，冬至如果出现在22号之后，二九就会落在次年1月
