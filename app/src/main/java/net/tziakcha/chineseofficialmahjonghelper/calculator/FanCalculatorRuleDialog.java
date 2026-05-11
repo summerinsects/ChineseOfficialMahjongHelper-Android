@@ -33,10 +33,10 @@ public class FanCalculatorRuleDialog extends AlertDialog {
 
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
 
-        // 头28+2=30 脚2+80+6+6=94，30+94=124，留150
-        int siblings = getContext().getResources().getDimensionPixelSize(R.dimen.dp150);
+        // 头28+2=30 脚2+6+30+6=44，30+44=74，按75算
+        int siblings = getContext().getResources().getDimensionPixelSize(R.dimen.dp75);
         contentView.findViewById(R.id.fcrl_sv).getLayoutParams().height =
-                metrics.heightPixels - siblings;
+                metrics.heightPixels * 8 / 10 - siblings;
 
         setContentView(contentView);
 
@@ -44,7 +44,7 @@ public class FanCalculatorRuleDialog extends AlertDialog {
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
 
-            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 8 / 10,
+            window.setLayout(metrics.widthPixels * 8 / 10,
                     WindowManager.LayoutParams.WRAP_CONTENT);
         }
     }
