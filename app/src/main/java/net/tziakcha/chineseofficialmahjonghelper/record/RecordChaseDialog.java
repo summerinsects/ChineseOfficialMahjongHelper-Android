@@ -192,10 +192,8 @@ public class RecordChaseDialog extends AlertDialog {
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
 
-            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-            layoutParams.copyFrom(window.getAttributes());
-            layoutParams.width = totalWidth + 2 + context.getResources().getDimensionPixelSize(R.dimen.dp20);
-            window.setAttributes(layoutParams);
+            window.setLayout(totalWidth + 2 + context.getResources().getDimensionPixelSize(R.dimen.dp20),
+                    WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
         // 监听返回键

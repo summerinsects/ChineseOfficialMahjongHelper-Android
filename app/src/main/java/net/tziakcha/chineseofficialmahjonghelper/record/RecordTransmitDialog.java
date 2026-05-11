@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,6 +50,9 @@ public class RecordTransmitDialog extends AlertDialog {
         Window window = getWindow();
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
+
+            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 8 / 10,
+                    WindowManager.LayoutParams.WRAP_CONTENT);
         }
     }
 

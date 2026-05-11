@@ -8,6 +8,7 @@ import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -152,6 +153,9 @@ public class DatePickerDialog extends AlertDialog {
         Window window = getWindow();
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
+
+            window.setLayout(context.getResources().getDimensionPixelSize(R.dimen.dp320),
+                    WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
         // 监听返回键

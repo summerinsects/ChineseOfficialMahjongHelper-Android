@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -55,6 +56,9 @@ public class RecordResetDialog extends AlertDialog {
         Window window = getWindow();
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
+
+            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 8 / 10,
+                    WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
         // 监听返回键

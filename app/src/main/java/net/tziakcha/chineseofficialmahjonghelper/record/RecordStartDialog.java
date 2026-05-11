@@ -130,6 +130,9 @@ public class RecordStartDialog extends AlertDialog {
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
             window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 8 / 10,
+                    WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
         // 监听返回键

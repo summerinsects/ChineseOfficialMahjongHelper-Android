@@ -33,4 +33,5 @@
     <dimen name="dp150">300dp</dimen>
     <dimen name="dp155">310dp</dimen>
     <dimen name="dp280">560dp</dimen>
+    <dimen name="dp320">640dp</dimen>
 </resources>
