@@ -121,8 +121,8 @@ public class RecordSheetFragment extends Fragment {
 
         // 选手姓名+开局座位+每圈座位+累计+名次+标准分 16+6=22
         final int colMaxHeight = maxSheetHeight / 22;
-        final int colHeight = Math.min(colMaxHeight, (int)(Math.floor((double)colWidth * 0.4)));
-        final int textSize = (int)Math.ceil(colHeight * 0.95f);
+        final int colHeight = Math.min(colMaxHeight, colWidth * 4 / 10);
+        final int textSize = colHeight * 95 / 100;
 
         final int sheetHeight = colHeight * 22 + 2;
         rlSheet.getLayoutParams().height = sheetHeight;

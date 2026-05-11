@@ -70,7 +70,7 @@ public class RecordChaseDialog extends AlertDialog {
         final int colWidth1 = metrics.widthPixels / 6;
         final int colWidth2 = metrics.widthPixels / 9;
         final int colHeight = metrics.widthPixels / 16;
-        final int textSize = (int)Math.ceil(colHeight * 0.95f);
+        final int textSize = colHeight * 95 / 100;
         final int totalWidth = colWidth1 * 2 + colWidth2 * 4;
 
         rlSheet.getLayoutParams().width = totalWidth + 2;
