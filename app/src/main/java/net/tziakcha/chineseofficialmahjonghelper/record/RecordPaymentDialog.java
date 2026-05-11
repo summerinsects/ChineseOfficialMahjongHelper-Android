@@ -51,18 +51,33 @@ public class RecordPaymentDialog extends AlertDialog {
             dismiss();
         });
 
-        final int dp20 = context.getResources().getDimensionPixelSize(R.dimen.dp20);
+        final TextView instText = contentView.findViewById(R.id.ryl_txt_inst);
+        final int[] stringIds = {
+                R.string.rs_standard_instruction,
+                R.string.rs_split_self_drawn_instruction,
+                R.string.rs_shoot_undertake_instruction,
+                R.string.rs_involved_no_base_instruction,
+        };
+        instText.setText(stringIds[mMode]);
+
+        final int dp25 = context.getResources().getDimensionPixelSize(R.dimen.dp25);
         final int[] radioButtonIds = {
-                R.id.ryl_rb_mode0, R.id.ryl_rb_mode1, R.id.ryl_rb_mode2, R.id.ryl_rb_mode3
+                R.id.ryl_rb_mode0,
+                R.id.ryl_rb_mode1,
+                R.id.ryl_rb_mode2,
+                R.id.ryl_rb_mode3,
         };
         for (int i = 0; i < 4; ++i) {
             RadioButton radioButton = contentView.findViewById(radioButtonIds[i]);
 
-            Utils.adaptCompoundButton(radioButton, dp20);
+            Utils.adaptCompoundButton(radioButton, dp25);
             radioButton.setChecked(mMode == i);
 
             final int idx = i;
-            radioButton.setOnClickListener(view -> mMode = idx);
+            radioButton.setOnClickListener(view -> {
+                mMode = idx;
+                instText.setText(stringIds[mMode]);
+            });
         }
 
         setContentView(contentView);

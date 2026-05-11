@@ -19,6 +19,15 @@
 
         <include layout="@layout/dialog_header" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:textColor="@color/text_2"
+            android:textSize="@dimen/dp14"
+            android:text="不少竞技麻将爱好者诟病国标麻将自摸番3，因此创造性地试验了多种其他授受制，本APP收录几种供大家选择。" />
+
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,64 +38,55 @@
             <RadioButton
                 android:id="@+id/ryl_rb_mode0"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp25"
                 android:layout_weight="1"
-                android:textColor="@color/text_1"
-                android:textSize="@dimen/dp14"
-                android:text="标准" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp5"
-                android:textColor="@color/text_3"
-                android:textSize="@dimen/dp12"
-                android:text="国内外各大赛事采用的结算模式。由于标准模式常被诟病自摸番3，故而坊间有竞技麻将爱好者试验了多种其他授受制，本APP收录以下几种供大家选择。"/>
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="标准" />
             <RadioButton
                 android:id="@+id/ryl_rb_mode1"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp25"
                 android:layout_weight="1"
-                android:textColor="@color/text_1"
-                android:textSize="@dimen/dp14"
-                android:text="自摸平摊" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp5"
-                android:textColor="@color/text_3"
-                android:textSize="@dimen/dp12"
-                android:text="坊间试验的全铳制模式①，旨在削弱自摸收益。\n结算方法：自摸时每人支付「底分+番数÷3」，向上取整；点炮时与标准模式相同。"/>
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="自摸平摊" />
             <RadioButton
                 android:id="@+id/ryl_rb_mode2"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp25"
                 android:layout_weight="1"
-                android:textColor="@color/text_1"
-                android:textSize="@dimen/dp14"
-                android:text="点炮承包" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dp5"
-                android:textColor="@color/text_3"
-                android:textSize="@dimen/dp12"
-                android:text="坊间试验的全铳制模式②，通过加重对点炮的惩罚平衡自摸收益。\n结算方法：点炮时，点炮人支付「底分+番数&#x00d7;3」，其他两人支付底分；自摸时与标准模式相同。"/>
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="点炮承包" />
             <RadioButton
                 android:id="@+id/ryl_rb_mode3"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp25"
                 android:layout_weight="1"
+                android:layout_marginBottom="@dimen/dp5"
                 android:textColor="@color/text_1"
-                android:textSize="@dimen/dp14"
+                android:textSize="@dimen/dp16"
                 android:text="牵连免底" />
+        </RadioGroup>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp120"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10">
             <TextView
+                android:id="@+id/ryl_txt_inst"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginHorizontal="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
                 android:textColor="@color/text_3"
-                android:textSize="@dimen/dp12"
-                android:text="坊间试验的一种模式，旨在保留传统点炮与自摸区别的同时，又削弱自摸的收益。\n结算方法：点炮或被自摸（谓之受牵连）时不支付底分，仅在别人点和且非自己点炮时支付底分。"/>
-        </RadioGroup>
+                android:textSize="@dimen/dp12" />
+        </ScrollView>
 
         <include layout="@layout/dialog_footer2" />
 

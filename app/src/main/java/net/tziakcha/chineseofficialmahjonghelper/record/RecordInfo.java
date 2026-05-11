@@ -86,6 +86,7 @@ public final class RecordInfo {
 
             switch (mode) {
                 default:
+                    // 标准
                     if (winIndex != claimIndex) {  // 点炮
                         for (int i = 0; i < 4; ++i) {
                             res[i] = (i == winIndex) ? (fan + 24) : (i == claimIndex ? (-8 - fan) : -8);
@@ -97,12 +98,13 @@ public final class RecordInfo {
                     }
                     break;
                 case MODE_SPLIT_SELF_DRAWN:
+                    // 自摸平摊
                     if (winIndex != claimIndex) {  // 点炮
                         for (int i = 0; i < 4; ++i) {
                             res[i] = (i == winIndex) ? (fan + 24) : (i == claimIndex ? (-8 - fan) : -8);
                         }
                     } else {
-                        // 自摸平摊，每人支付(fan/3)向上取整+8
+                        // 每人支付(fan/3)向上取整+8
                         int fan1 = fan / 3 + (fan % 3 != 0 ? 1 : 0);
                         for (int i = 0; i < 4; ++i) {
                             res[i] = (i == winIndex) ? (fan1 + 8) * 3 : (-8 - fan1);
@@ -110,8 +112,9 @@ public final class RecordInfo {
                     }
                     break;
                 case MODE_SHOOT_UNDERTAKE:
+                    // 点炮承包
                     if (winIndex != claimIndex) {  // 点炮
-                        // 点炮承包，点炮者支付fan*3+8
+                        // 点炮者支付fan*3+8
                         for (int i = 0; i < 4; ++i) {
                             res[i] = (i == winIndex) ? (fan * 3 + 24) : (i == claimIndex ? (-8 - fan * 3) : -8);
                         }
@@ -122,6 +125,7 @@ public final class RecordInfo {
                     }
                     break;
                 case MODE_INVOLVED_NO_BASE:
+                    // 牵连免底
                     if (winIndex != claimIndex) {  // 点炮
                         // 点炮者不给底分
                         for (int i = 0; i < 4; ++i) {

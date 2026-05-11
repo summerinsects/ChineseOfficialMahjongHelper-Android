@@ -127,23 +127,17 @@ public class RecordChase2Dialog extends AlertDialog {
         }
 
         // 用分差计算 自摸、对点、旁点各需要多少番
-        int delta = Integer.parseUnsignedInt(str);
+        final int delta = Integer.parseUnsignedInt(str);
+        String[] res = {"8", "8", "8"};
         switch (mMode) {
             default: {
                 // 标准
                 // 自摸：3(f+8)+(f+8)=4f+32>d，即：f>(d-32)/4
                 // 对点：(f+24)+(f+8)=2f+32>d，即：f>(d-32)/2
                 // 旁点：(f+24)+8=f+32>d，即：f>d-32
-                int tmp = delta - 32;
-                if (tmp > 0) {
-                    mEditText[1].setText(String.valueOf(Math.max(8, (tmp >> 2) + 1)));
-                    mEditText[2].setText(String.valueOf(Math.max(8, (tmp >> 1) + 1)));
-                    mEditText[3].setText(String.valueOf(Math.max(8, tmp + 1)));
-                } else {
-                    mEditText[1].setText("8");
-                    mEditText[2].setText("8");
-                    mEditText[3].setText("8");
-                }
+                if (delta > 64) res[0] = String.valueOf(((delta - 32) >> 2) + 1);
+                if (delta > 48) res[1] = String.valueOf(((delta - 32) >> 1) + 1);
+                if (delta > 40) res[2] = String.valueOf((delta - 32) + 1);
                 break;
             }
             case RecordInfo.MODE_SPLIT_SELF_DRAWN: {
@@ -151,16 +145,9 @@ public class RecordChase2Dialog extends AlertDialog {
                 // 自摸：3(⌈‌f/3⌉+8)+(⌈f/3⌉+8)=4⌈f/3⌉+32>d，即：⌈f/3⌉>(d-32)/4，f>(d-32)/4*3
                 // 对点：(f+24)+(f+8)=2f+32>d，即：f>(d-32)/2
                 // 旁点：(f+24)+8=f+32>d，即：f>d-32
-                int tmp = delta - 32;
-                if (tmp > 0) {
-                    mEditText[1].setText(String.valueOf(Math.max(8, (tmp >> 2) * 3 + 1)));
-                    mEditText[2].setText(String.valueOf(Math.max(8, (tmp >> 1) + 1)));
-                    mEditText[3].setText(String.valueOf(Math.max(8, tmp + 1)));
-                } else {
-                    mEditText[1].setText("8");
-                    mEditText[2].setText("8");
-                    mEditText[3].setText("8");
-                }
+                if (delta > 44) res[0] = String.valueOf(((delta - 32) >> 2) * 3 + 1);
+                if (delta > 48) res[1] = String.valueOf(((delta - 32) >> 1) + 1);
+                if (delta > 40) res[2] = String.valueOf((delta - 32) + 1);
                 break;
             }
             case RecordInfo.MODE_SHOOT_UNDERTAKE: {
@@ -168,16 +155,9 @@ public class RecordChase2Dialog extends AlertDialog {
                 // 自摸：3(f+8)+(f+8)=4f+32>d，即：f>(d-32)/4
                 // 对点：(3f+24)+(3f+8)=6f+32>d，即：f>(d-32)/6
                 // 旁点：(3f+24)+8=3f+32>d，即：f>(d-32)/3
-                int tmp = delta - 32;
-                if (tmp > 0) {
-                    mEditText[1].setText(String.valueOf(Math.max(8, (tmp >> 2) + 1)));
-                    mEditText[2].setText(String.valueOf(Math.max(8, tmp / 6 + 1)));
-                    mEditText[3].setText(String.valueOf(Math.max(8, tmp / 3 + 1)));
-                } else {
-                    mEditText[1].setText("8");
-                    mEditText[2].setText("8");
-                    mEditText[3].setText("8");
-                }
+                if (delta > 64) res[0] = String.valueOf(((delta - 32) >> 2) + 1);
+                if (delta > 80) res[1] = String.valueOf((delta - 32) / 6 + 1);
+                if (delta > 56) res[2] = String.valueOf((delta - 32) / 3 + 1);
                 break;
             }
             case RecordInfo.MODE_INVOLVED_NO_BASE: {
@@ -185,16 +165,18 @@ public class RecordChase2Dialog extends AlertDialog {
                 // 自摸：3f+f=4f>d，即：f>d/4
                 // 对点：(f+16)+f=2f+16>d，即：f>(d-16)/2
                 // 旁点：(f+16)+8=f+24>d，即：f>d-24
-                mEditText[1].setText(String.valueOf(Math.max(8, (delta >> 2) + 1)));
-                if (delta > 16) {
-                    mEditText[2].setText(String.valueOf(Math.max(8, ((delta - 16) >> 1) + 1)));
-                } else {
-                    mEditText[2].setText("8");
+                if (delta > 32) {
+                    res[0] = String.valueOf((delta >> 2) + 1);
+                    res[1] = String.valueOf(((delta - 16) >> 1) + 1);
+                    res[2] = String.valueOf(delta - 24 + 1);
                 }
-                mEditText[3].setText(String.valueOf(Math.max(8, delta - 24 + 1)));
                 break;
             }
         }
+
+        mEditText[1].setText(res[0]);
+        mEditText[2].setText(res[1]);
+        mEditText[3].setText(res[2]);
     }
 
     private void onCalcButton1() {
