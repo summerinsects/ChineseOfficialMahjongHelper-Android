@@ -46,6 +46,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
     private static final class CompetitionInfo {
         public String name;
         public String time;
+        public String location;
         public String url;
     }
 
@@ -99,7 +100,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
                     is.close();
 
                     // 测试数据
-                    //str = "[{\"name\":\"第20届中国麻将牌王赛和大师赛（西安）\",\"url\":\"https://mp.weixin.qq.com/s/elABqIMDZQl_ToSdkX0vYw\",\"start_time\":1553184000,\"end_time\":1553616000,\"time_accuracy\":2}]";
+                    //str = "[{\"name\":\"2026国标麻将(MCR)技术等级升段赛（杭州上城赛区）第1场\",\"location\":\"浙江杭州\",\"start_time\":1778688000,\"time_accuracy\":2},{\"name\":\"第一届「铁友杯」中国麻将精英赛\",\"url\":\"https://mp.weixin.qq.com/s/niiHyz4z2xkVWaXCetEstw\",\"location\":\"山西吕梁\",\"start_time\":1778774400,\"end_time\":1778947200,\"time_accuracy\":2},{\"name\":\"2026年「虎纠杯」盛殿国标麻将精英赛\",\"url\":\"https://mp.weixin.qq.com/s/NWnqyE7wnIyS5-yD-SYlJA\",\"location\":\"福建福州\",\"start_time\":1779379200,\"end_time\":1779552000,\"time_accuracy\":2},{\"name\":\"第五届「雀韵杯」国标麻将精英邀请赛\",\"url\":\"https://mp.weixin.qq.com/s/FHjn_wp5Utk5uwr2Tc6MTA\",\"location\":\"安徽合肥\",\"start_time\":1780070400,\"end_time\":1780156800,\"time_accuracy\":2},{\"name\":\"2026国标麻将(MCR)技术等级升段赛（杭州拱墅・隐智竞馆赛区）第2场\",\"location\":\"浙江杭州\",\"start_time\":1780070400,\"time_accuracy\":2},{\"name\":\"2026国标麻将(MCR)技术等级升段赛（上海松江赛区）第2场\",\"location\":\"上海松江\",\"start_time\":1780156800,\"time_accuracy\":2},{\"name\":\"2026国标麻将(MCR)技术等级升段赛（北京朝阳赛区）第2场\",\"location\":\"北京朝阳\",\"start_time\":1780156800,\"time_accuracy\":2},{\"name\":\"2026第三届彩云之南「九莲杯」国标麻将年度公开赛\",\"url\":\"https://mp.weixin.qq.com/s/E80NTMILktYbLOYDgI6yxw\",\"location\":\"云南昆明\",\"start_time\":1781193600,\"end_time\":1781366400,\"time_accuracy\":2},{\"name\":\"2026「温暖杯」神话国标麻将精英邀请赛\",\"url\":\"https://mp.weixin.qq.com/s/J2frHWNlhusByhvnkdmCcQ\",\"location\":\"广西南宁\",\"start_time\":1783699200,\"end_time\":1783785600,\"time_accuracy\":2},{\"name\":\"鑫传奇杯第三届英雄武汉竞技麻将精英赛\",\"location\":\"湖北武汉\",\"start_time\":1789056000,\"end_time\":1789228800,\"time_accuracy\":2}]";
 
                     if (!str.isEmpty()) {
                         ArrayList<CompetitionInfo> competitions = parseResponse(str);
@@ -332,6 +333,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
                 if (start_time > now) {
                     CompetitionInfo competition = new CompetitionInfo();
                     competition.name = obj.getString("name");
+                    competition.location = obj.getString("location");
                     if (obj.has("url")) {
                         competition.url = obj.getString("url");
                     }
@@ -371,6 +373,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
         private final View mRoot;
         private final TextView mTitleText;
         private final TextView mTimeText;
+        private final TextView mLocationText;
         private final Button mDetailButton;
         private int mIndex = -1;
 
@@ -387,6 +390,10 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
 
             mTimeText = itemView.findViewById(R.id.cil_txt_time);
             TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mTimeText,
+                    dp8, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
+
+            mLocationText = itemView.findViewById(R.id.cil_txt_loc);
+            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mLocationText,
                     dp8, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
 
             mDetailButton = itemView.findViewById(R.id.cil_btn);
@@ -414,6 +421,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
 
             mTitleText.setText(competition.name);
             mTimeText.setText(competition.time);
+            mLocationText.setText(competition.location);
             if (competition.url != null && !competition.url.isEmpty()) {
                 mDetailButton.setVisibility(View.VISIBLE);
             } else {
