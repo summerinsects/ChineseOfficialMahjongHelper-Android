@@ -57,6 +57,7 @@ public class RecordPaymentDialog extends AlertDialog {
                 R.string.rs_split_self_drawn_instruction,
                 R.string.rs_shoot_undertake_instruction,
                 R.string.rs_involved_no_base_instruction,
+                R.string.rs_shoot_double_instruction,
         };
         instText.setText(stringIds[mMode]);
 
@@ -66,8 +67,9 @@ public class RecordPaymentDialog extends AlertDialog {
                 R.id.ryl_rb_mode1,
                 R.id.ryl_rb_mode2,
                 R.id.ryl_rb_mode3,
+                R.id.ryl_rb_mode4,
         };
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 5; ++i) {
             RadioButton radioButton = contentView.findViewById(radioButtonIds[i]);
 
             Utils.adaptCompoundButton(radioButton, dp25);

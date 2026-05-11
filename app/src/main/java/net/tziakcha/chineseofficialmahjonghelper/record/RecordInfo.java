@@ -12,9 +12,10 @@ public final class RecordInfo {
     public static final int MODE_SPLIT_SELF_DRAWN = 1;  // 自摸平摊
     public static final int MODE_SHOOT_UNDERTAKE = 2;  // 点炮承包
     public static final int MODE_INVOLVED_NO_BASE = 3;  // 牵连免底
+    public static final int MODE_SHOOT_DOUBLE = 4;  // 点炮双倍
 
     public static final String[] MODE_NAME_TEXT = {
-            "标准", "自摸平摊", "点炮承包", "牵连免底"
+            "标准", "自摸平摊", "点炮承包", "牵连免底", "点炮双倍"
     };
 
     public static final class Detail {
@@ -135,6 +136,19 @@ public final class RecordInfo {
                         // 自摸不给底分
                         for (int i = 0; i < 4; ++i) {
                             res[i] = (i == winIndex) ? fan * 3 : -fan;
+                        }
+                    }
+                    break;
+                case MODE_SHOOT_DOUBLE:
+                    // 点炮双倍
+                    if (winIndex != claimIndex) {  // 点炮
+                        // 点炮者支付fan*2
+                        for (int i = 0; i < 4; ++i) {
+                            res[i] = (i == winIndex) ? (fan * 2 + 16) : (i == claimIndex ? -2 * fan : -8);
+                        }
+                    } else {
+                        for (int i = 0; i < 4; ++i) {
+                            res[i] = (i == winIndex) ? (fan + 8) * 3 : (-8 - fan);
                         }
                     }
                     break;

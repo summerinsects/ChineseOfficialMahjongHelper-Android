@@ -71,6 +71,15 @@
                 android:textColor="@color/text_1"
                 android:textSize="@dimen/dp16"
                 android:text="牵连免底" />
+            <RadioButton
+                android:id="@+id/ryl_rb_mode4"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp25"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/dp5"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp16"
+                android:text="点炮双倍" />
         </RadioGroup>
 
         <ScrollView

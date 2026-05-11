@@ -172,6 +172,16 @@ public class RecordChase2Dialog extends AlertDialog {
                 }
                 break;
             }
+            case RecordInfo.MODE_SHOOT_DOUBLE: {
+                // 点炮双倍
+                // 自摸：3(f+8)+(f+8)=4f+32>d，即：f>(d-32)/4
+                // 对点：(2f+16)+2f=4f+16>d，即：f>(d-16)/4
+                // 旁点：(2f+16)+8=2f+24>d，即：f>(d-24)/2
+                if (delta > 64) res[0] = String.valueOf(((delta - 32) >> 2) + 1);
+                if (delta > 48) res[1] = String.valueOf(((delta - 16) >> 2) + 1);
+                if (delta > 40) res[2] = String.valueOf(((delta - 24) >> 1) + 1);
+                break;
+            }
         }
 
         mEditText[1].setText(res[0]);
@@ -189,7 +199,7 @@ public class RecordChase2Dialog extends AlertDialog {
         int fan = Integer.parseUnsignedInt(str);
         switch (mMode) {
             default:
-                // 标准/点炮承包：3(f+8)+(f+8)=4f+32
+                // 标准/点炮承包/点炮双倍：3(f+8)+(f+8)=4f+32
                 mEditText[0].setText(String.valueOf((fan << 2) + 32));
                 break;
             case RecordInfo.MODE_SPLIT_SELF_DRAWN:
@@ -227,6 +237,10 @@ public class RecordChase2Dialog extends AlertDialog {
                 // 牵连免底：(f+16)+f=2f+16
                 mEditText[0].setText(String.valueOf((fan << 1) + 16));
                 break;
+            case RecordInfo.MODE_SHOOT_DOUBLE:
+                // 点炮双倍：(2f+16)+2f=4f+16
+                mEditText[0].setText(String.valueOf((fan << 2) + 16));
+                break;
         }
 
         mEditText[1].setText("");
@@ -253,6 +267,10 @@ public class RecordChase2Dialog extends AlertDialog {
             case RecordInfo.MODE_INVOLVED_NO_BASE:
                 // 牵连免底：(f+16)+8=f+24
                 mEditText[0].setText(String.valueOf(fan + 24));
+                break;
+            case RecordInfo.MODE_SHOOT_DOUBLE:
+                // 点炮双倍：(2f+16)+8=2f+24
+                mEditText[0].setText(String.valueOf(fan * 2 + 24));
                 break;
         }
 
