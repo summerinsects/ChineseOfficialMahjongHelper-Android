@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="SpUsage,PxUsage,ContentDescription,HardcodedText,ButtonStyle"
     android:layout_width="match_parent"
@@ -28,88 +29,103 @@
             android:layout_marginTop="@dimen/dp48"
             android:background="#7fa6a6a6" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp5"
             android:layout_centerVertical="true"
-            android:baselineAligned="false"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp5"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/am_btn_calc"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="算番器" />
-                <Button
-                    android:id="@+id/am_btn_record"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="计分器" />
-                <Button
-                    android:id="@+id/am_btn_rule"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="规则" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp5"
+            tools:ignore="RtlSymmetry">
+
+            <Button
+                android:id="@+id/am_btn_calc"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="算番器"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toStartOf="@+id/am_btn_record"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/am_btn_record"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="计分器"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toStartOf="@+id/am_btn_rule"
+                app:layout_constraintStart_toEndOf="@+id/am_btn_calc"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/am_btn_rule"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="规则"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/am_btn_record"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/am_btn_theory"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="@dimen/dp5"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/am_btn_theory"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="牌理" />
-                <Button
-                    android:id="@+id/am_btn_train"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="训练" />
-                <Button
-                    android:id="@+id/am_btn_other"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dp100"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_square"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/dp24"
-                    android:text="其他" />
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="牌理"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toStartOf="@+id/am_btn_train"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/am_btn_calc" />
+
+            <Button
+                android:id="@+id/am_btn_train"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="训练"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toStartOf="@+id/am_btn_other"
+                app:layout_constraintStart_toEndOf="@+id/am_btn_theory"
+                app:layout_constraintTop_toBottomOf="@+id/am_btn_record" />
+
+            <Button
+                android:id="@+id/am_btn_other"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp5"
+                android:background="@drawable/btn_square"
+                android:textColor="#fff"
+                android:textSize="@dimen/dp24"
+                android:text="其他"
+                app:layout_constraintDimensionRatio="5:4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/am_btn_train"
+                app:layout_constraintTop_toBottomOf="@+id/am_btn_rule" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/am_txt"
