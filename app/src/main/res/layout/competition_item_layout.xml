@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:ignore="SpUsage,HardcodedText,ContentDescription"
+    tools:ignore="SpUsage,PxUsage,HardcodedText,ContentDescription"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground">
@@ -21,7 +21,10 @@
             android:layout_marginTop="@dimen/dp5"
             android:layout_marginHorizontal="@dimen/dp5"
             android:textColor="@color/text_1"
-            android:textSize="@dimen/dp14" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="@dimen/dp6"
+            app:autoSizeMaxTextSize="@dimen/dp14"
+            app:autoSizeStepGranularity="2px" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -43,7 +46,10 @@
                 android:layout_marginStart="@dimen/dp24"
                 android:layout_marginEnd="@dimen/dp80"
                 android:textColor="@color/text_3"
-                android:textSize="@dimen/dp14" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp14"
+                app:autoSizeStepGranularity="2px" />
 
             <ImageView
                 android:layout_width="@dimen/dp18"
@@ -62,7 +68,10 @@
                 android:layout_marginStart="@dimen/dp24"
                 android:layout_marginEnd="@dimen/dp80"
                 android:textColor="@color/text_3"
-                android:textSize="@dimen/dp14" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp14"
+                app:autoSizeStepGranularity="2px" />
 
             <Button
                 android:id="@+id/cil_btn"

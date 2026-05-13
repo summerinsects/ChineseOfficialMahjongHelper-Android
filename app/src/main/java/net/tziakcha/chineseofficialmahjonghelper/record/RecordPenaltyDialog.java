@@ -3,7 +3,6 @@ package net.tziakcha.chineseofficialmahjonghelper.record;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.widget.TextViewCompat;
 
 import net.tziakcha.chineseofficialmahjonghelper.Common;
 import net.tziakcha.chineseofficialmahjonghelper.R;
@@ -57,26 +55,10 @@ public class RecordPenaltyDialog extends AlertDialog {
             dismiss();
         });
 
-        final int dp6 = context.getResources().getDimensionPixelSize(R.dimen.dp6);
-        final int dp14 = context.getResources().getDimensionPixelSize(R.dimen.dp14);
-
-        TextView textView;
-        textView = contentView.findViewById(R.id.rpl_txt_name0);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp6, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-        textView.setText(mNames[0]);
-        textView = contentView.findViewById(R.id.rpl_txt_name1);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp6, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-        textView.setText(mNames[1]);
-        textView = contentView.findViewById(R.id.rpl_txt_name2);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp6, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-        textView.setText(mNames[2]);
-        textView = contentView.findViewById(R.id.rpl_txt_name3);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp6, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-        textView.setText(mNames[3]);
+        ((TextView)contentView.findViewById(R.id.rpl_txt_name0)).setText(mNames[0]);
+        ((TextView)contentView.findViewById(R.id.rpl_txt_name1)).setText(mNames[1]);
+        ((TextView)contentView.findViewById(R.id.rpl_txt_name2)).setText(mNames[2]);
+        ((TextView)contentView.findViewById(R.id.rpl_txt_name3)).setText(mNames[3]);
 
         contentView.findViewById(R.id.rpl_btn_d100).setOnClickListener(view -> adjustScore(0, -10));
         contentView.findViewById(R.id.rpl_btn_d101).setOnClickListener(view -> adjustScore(1, -10));

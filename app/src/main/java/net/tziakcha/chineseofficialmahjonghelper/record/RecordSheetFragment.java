@@ -105,10 +105,6 @@ public class RecordSheetFragment extends Fragment {
         Context context = requireContext();
 
         mTimeText = contentView.findViewById(R.id.rsl_txt_time);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mTimeText,
-                getResources().getDimensionPixelSize(R.dimen.dp10),
-                getResources().getDimensionPixelSize(R.dimen.dp14),
-                2, TypedValue.COMPLEX_UNIT_PX);
 
         // 画表格
         RelativeLayout rlSheet = contentView.findViewById(R.id.rsl_rl_sheet);

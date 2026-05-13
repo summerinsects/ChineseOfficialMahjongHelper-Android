@@ -3,7 +3,6 @@ package net.tziakcha.chineseofficialmahjonghelper.other;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -380,22 +378,10 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
         public CompetitionViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            final int dp14 = itemView.getContext().getResources().getDimensionPixelSize(R.dimen.dp14);
-            final int dp8 = itemView.getContext().getResources().getDimensionPixelSize(R.dimen.dp8);
-
             mRoot = itemView.findViewById(R.id.cil_rl);
             mTitleText = itemView.findViewById(R.id.cil_txt_title);
-            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mTitleText,
-                    dp8, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-
             mTimeText = itemView.findViewById(R.id.cil_txt_time);
-            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mTimeText,
-                    dp8, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-
             mLocationText = itemView.findViewById(R.id.cil_txt_loc);
-            TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mLocationText,
-                    dp8, dp14, 2, TypedValue.COMPLEX_UNIT_PX);
-
             mDetailButton = itemView.findViewById(R.id.cil_btn);
             mDetailButton.setOnClickListener(view -> {
                 if (mIndex != -1) {

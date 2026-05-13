@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:ignore="SpUsage,HardcodedText"
+    tools:ignore="SpUsage,PxUsage,HardcodedText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
@@ -85,7 +85,10 @@
             android:paddingHorizontal="@dimen/dp5"
             android:singleLine="true"
             android:textColor="@color/text_1"
-            android:textSize="@dimen/dp14" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="@dimen/dp6"
+            app:autoSizeMaxTextSize="@dimen/dp14"
+            app:autoSizeStepGranularity="2px" />
     </LinearLayout>
 
 </LinearLayout>

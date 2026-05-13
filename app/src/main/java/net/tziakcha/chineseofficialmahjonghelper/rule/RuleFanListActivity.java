@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -205,7 +204,6 @@ public class RuleFanListActivity extends AppCompatActivity {
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
             final int dp16 = context.getResources().getDimensionPixelSize(R.dimen.dp16);
-            final int dp6 = context.getResources().getDimensionPixelSize(R.dimen.dp6);
 
             // 几番
             TextView textView0 = new TextView(context);
@@ -241,10 +239,7 @@ public class RuleFanListActivity extends AppCompatActivity {
                 wrapper.findViewById(R.id.fbw_btn).setOnClickListener(
                         view -> onFanClick(mIndex, which));
 
-                TextView textView1 = wrapper.findViewById(R.id.fbw_txt);
-                TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView1,
-                        dp6, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
-                mFanTexts[i] = textView1;
+                mFanTexts[i] = wrapper.findViewById(R.id.fbw_txt);
             }
         }
 

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -16,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.widget.TextViewCompat;
 
 import net.tziakcha.chineseofficialmahjonghelper.CalendarUtils;
 import net.tziakcha.chineseofficialmahjonghelper.R;
@@ -91,9 +89,6 @@ public class DatePickerDialog extends AlertDialog {
 
         contentView.findViewById(R.id.dpl_btn_today).setOnClickListener(view -> onTodayButton());
 
-        final int dp10 = getContext().getResources().getDimensionPixelSize(R.dimen.dp10);
-        final int dp5 = getContext().getResources().getDimensionPixelSize(R.dimen.dp5);
-
         mDateLayout = contentView.findViewById(R.id.dpl_ll_date);
         final int[] dateIDs = {
                 R.id.dpl_ll_date0, R.id.dpl_ll_date1, R.id.dpl_ll_date2,
@@ -109,8 +104,6 @@ public class DatePickerDialog extends AlertDialog {
                 mDayChecks[idx] = checkBox;
                 mLargeTexts[idx] = rl.findViewById(R.id.dpi_txt_g);
                 mSmallTexts[idx] = rl.findViewById(R.id.dpi_txt_c);
-                TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(mSmallTexts[idx],
-                        dp5, dp10, 1, TypedValue.COMPLEX_UNIT_PX);
 
                 mChineseDates[idx] = new CalendarUtils.ChineseDate();
             }

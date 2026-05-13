@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.TextViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -206,9 +205,6 @@ public class RecordDetailDialog extends AlertDialog {
             return false;
         });
 
-        final int dp8 = context.getResources().getDimensionPixelSize(R.dimen.dp8);
-        final int dp12 = context.getResources().getDimensionPixelSize(R.dimen.dp12);
-        final int dp16 = context.getResources().getDimensionPixelSize(R.dimen.dp16);
         final int dp28 = context.getResources().getDimensionPixelSize(R.dimen.dp28);
 
         mTieCheck = contentView.findViewById(R.id.rdl_cb_tie);
@@ -217,26 +213,16 @@ public class RecordDetailDialog extends AlertDialog {
         Utils.adaptCompoundButton(mTimeoutCheck, dp28);
 
         TextView textView = contentView.findViewById(R.id.rdl_txt_order);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp8, dp12, 2, TypedValue.COMPLEX_UNIT_PX);
         textView.setText("选手按「"
                 + (mSeatOrder == 0 ? "本圈座位" : mSeatOrder == 1 ? "本盘座位" : "开局座位") + "」排列");
 
         textView = contentView.findViewById(R.id.rdl_txt_name0);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp8, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
         textView.setText(mNames[0]);
         textView = contentView.findViewById(R.id.rdl_txt_name1);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp8, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
         textView.setText(mNames[1]);
         textView = contentView.findViewById(R.id.rdl_txt_name2);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp8, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
         textView.setText(mNames[2]);
         textView = contentView.findViewById(R.id.rdl_txt_name3);
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                dp8, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
         textView.setText(mNames[3]);
 
         mScoreTexts[0] = contentView.findViewById(R.id.rdl_txt_score0);
@@ -838,7 +824,6 @@ public class RecordDetailDialog extends AlertDialog {
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
             final int dp16 = context.getResources().getDimensionPixelSize(R.dimen.dp16);
-            final int dp6 = context.getResources().getDimensionPixelSize(R.dimen.dp6);
 
             // 几番
             TextView textView0 = new TextView(context);
@@ -869,10 +854,7 @@ public class RecordDetailDialog extends AlertDialog {
                 checkBox.setOnCheckedChangeListener(getCheckBoxCallback(i));
                 mCheckBoxes[i] = checkBox;
 
-                TextView textView1 = wrapper.findViewById(R.id.ftw_txt);
-                TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView1,
-                        dp6, dp16, 2, TypedValue.COMPLEX_UNIT_PX);
-                mFanTexts[i] = textView1;
+                mFanTexts[i] = wrapper.findViewById(R.id.ftw_txt);
             }
         }
 

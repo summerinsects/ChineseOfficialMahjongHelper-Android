@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="SpUsage"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="SpUsage,PxUsage"
     android:layout_width="0dp"
     android:layout_height="@dimen/dp42"
     android:layout_weight="1"
@@ -37,7 +38,10 @@
             android:layout_marginBottom="@dimen/dp2"
             android:gravity="center"
             android:textColor="@color/text_3"
-            android:textSize="@dimen/dp10" />
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="@dimen/dp5"
+            app:autoSizeMaxTextSize="@dimen/dp10"
+            app:autoSizeStepGranularity="1px" />
     </LinearLayout>
 
 </RelativeLayout>

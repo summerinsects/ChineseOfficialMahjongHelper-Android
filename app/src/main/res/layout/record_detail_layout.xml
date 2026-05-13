@@ -114,8 +114,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/dp12"
-                android:textColor="@color/text_3" />
+                android:textColor="@color/text_3"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp12"
+                app:autoSizeStepGranularity="2px" />
 
             <CheckBox
                 android:id="@+id/rdl_cb_to"
@@ -143,8 +146,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ff7f00"
-                android:textSize="@dimen/dp16"
-                android:text="" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/rdl_txt_name1"
                 android:layout_width="0dp"
@@ -153,8 +158,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ff7f00"
-                android:textSize="@dimen/dp16"
-                android:text="" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/rdl_txt_name2"
                 android:layout_width="0dp"
@@ -163,8 +170,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ff7f00"
-                android:textSize="@dimen/dp16"
-                android:text="" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/rdl_txt_name3"
                 android:layout_width="0dp"
@@ -173,8 +182,10 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ff7f00"
-                android:textSize="@dimen/dp16"
-                android:text="" />
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

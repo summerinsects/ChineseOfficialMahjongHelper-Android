@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.widget.TextViewCompat;
 
 import net.tziakcha.chineseofficialmahjonghelper.Common;
 import net.tziakcha.chineseofficialmahjonghelper.Mahjong;
@@ -134,11 +132,6 @@ public class RecordMinorDialog extends AlertDialog {
 
     @SuppressLint("SetTextI18n")
     private void setupButton(CheckBox checkBox, TextView textView, int idx) {
-        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(textView,
-                getContext().getResources().getDimensionPixelSize(R.dimen.dp8),
-                getContext().getResources().getDimensionPixelSize(R.dimen.dp16),
-                2, TypedValue.COMPLEX_UNIT_PX);
-
         if (mFanCount[idx] < 2) {
             textView.setText(Mahjong.FAN_NAME[Mahjong.DRAGON_PUNG + idx]);
         } else {
