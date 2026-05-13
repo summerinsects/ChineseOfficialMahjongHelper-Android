@@ -26,7 +26,7 @@
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp25"
-            android:layout_marginTop="@dimen/dp48"
+            android:layout_marginTop="@dimen/dp50"
             android:background="#7fa6a6a6" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -187,7 +187,7 @@
         <Button
             android:id="@+id/am_btn_setting"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
+            android:layout_height="@dimen/dp50"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
@@ -201,7 +201,7 @@
         <Button
             android:id="@+id/am_btn_changelog"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
+            android:layout_height="@dimen/dp50"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
@@ -215,7 +215,7 @@
         <Button
             android:id="@+id/am_btn_version"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
+            android:layout_height="@dimen/dp50"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
@@ -229,7 +229,7 @@
         <Button
             android:id="@+id/am_btn_exit"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp40"
+            android:layout_height="@dimen/dp50"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"

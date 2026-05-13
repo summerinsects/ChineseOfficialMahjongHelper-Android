@@ -115,7 +115,7 @@ public class RecordMinorDialog extends AlertDialog {
         if (window != null) {
             window.setBackgroundDrawableResource(android.R.color.transparent);
 
-            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 8 / 10,
+            window.setLayout(context.getResources().getDisplayMetrics().widthPixels * 9 / 10,
                     WindowManager.LayoutParams.WRAP_CONTENT);
         }
 
