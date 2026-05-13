@@ -99,15 +99,17 @@
 
     </RelativeLayout>
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp5">
+        android:layout_marginHorizontal="@dimen/dp5"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
         <CheckBox
             android:id="@+id/mtl_cb_sp"
-            android:layout_width="@dimen/dp70"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp28"
-            android:layout_columnWeight="1"
+            android:layout_weight="1"
             android:checked="true"
             android:singleLine="true"
             android:textColor="@color/text_1"
@@ -115,9 +117,9 @@
             android:text="七对" />
         <CheckBox
             android:id="@+id/mtl_cb_to"
-            android:layout_width="@dimen/dp70"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp28"
-            android:layout_columnWeight="1"
+            android:layout_weight="1"
             android:checked="true"
             android:singleLine="true"
             android:textColor="@color/text_1"
@@ -125,9 +127,9 @@
             android:text="十三幺" />
         <CheckBox
             android:id="@+id/mtl_cb_hkt"
-            android:layout_width="@dimen/dp70"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp28"
-            android:layout_columnWeight="1"
+            android:layout_weight="1"
             android:checked="true"
             android:singleLine="true"
             android:textColor="@color/text_1"
@@ -135,15 +137,15 @@
             android:text="全不靠" />
         <CheckBox
             android:id="@+id/mtl_cb_kt"
-            android:layout_width="@dimen/dp70"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dp28"
-            android:layout_columnWeight="1"
+            android:layout_weight="1"
             android:checked="true"
             android:singleLine="true"
             android:textColor="@color/text_1"
             android:textSize="@dimen/dp16"
             android:text="组合龙" />
-    </GridLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mtl_rv_result"

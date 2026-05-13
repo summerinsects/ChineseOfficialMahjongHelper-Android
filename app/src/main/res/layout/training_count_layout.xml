@@ -14,10 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp5">
+        android:layout_marginHorizontal="@dimen/dp5"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
         <RadioButton
             android:id="@+id/tcl_rb_cl"
             android:layout_width="@dimen/dp75"
@@ -44,17 +46,20 @@
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
             android:text="绝张" />
-    </GridLayout>
+    </LinearLayout>
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp5"
-        android:layout_marginHorizontal="@dimen/dp5">
+        android:layout_marginHorizontal="@dimen/dp5"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp28"
             android:layout_marginEnd="@dimen/dp5"
+            android:gravity="center_vertical"
             android:textColor="@color/text_1"
             android:textSize="@dimen/dp16"
             android:text="圈风" />
@@ -91,17 +96,20 @@
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
             android:text="北" />
-    </GridLayout>
+    </LinearLayout>
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp5"
-        android:layout_marginHorizontal="@dimen/dp5" >
+        android:layout_marginHorizontal="@dimen/dp5"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp28"
             android:layout_marginEnd="@dimen/dp5"
+            android:gravity="center_vertical"
             android:textColor="@color/text_1"
             android:textSize="@dimen/dp16"
             android:text="门风" />
@@ -138,7 +146,7 @@
             android:textColor="@color/text_3"
             android:textSize="@dimen/dp16"
             android:text="北" />
-    </GridLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

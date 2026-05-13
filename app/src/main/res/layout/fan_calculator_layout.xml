@@ -19,9 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp5">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/fcl_rb_cl"
@@ -49,7 +51,7 @@
                 android:textSize="@dimen/dp16"
                 android:text="绝张" />
 
-        </GridLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/fcl_btn_input"
@@ -69,9 +71,11 @@
         android:layout_marginTop="@dimen/dp5"
         android:layout_marginHorizontal="@dimen/dp5">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/fcl_cb_or"
@@ -98,7 +102,7 @@
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/dp16"
                 android:text="海底" />
-        </GridLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/fcl_btn_rule"
@@ -118,14 +122,17 @@
         android:layout_marginTop="@dimen/dp5"
         android:layout_marginHorizontal="@dimen/dp5">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp28"
                 android:layout_marginEnd="@dimen/dp5"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_1"
                 android:textSize="@dimen/dp16"
                 android:text="圈风" />
@@ -163,7 +170,7 @@
                 android:textSize="@dimen/dp16"
                 android:text="北" />
 
-        </GridLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/fcl_btn_flw"
@@ -183,14 +190,17 @@
         android:layout_marginTop="@dimen/dp5"
         android:layout_marginHorizontal="@dimen/dp5">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp28"
                 android:layout_marginEnd="@dimen/dp5"
+                android:gravity="center_vertical"
                 android:textColor="@color/text_1"
                 android:textSize="@dimen/dp16"
                 android:text="门风" />
@@ -228,7 +238,7 @@
                 android:textSize="@dimen/dp16"
                 android:text="北" />
 
-        </GridLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/fcl_btn_calc"

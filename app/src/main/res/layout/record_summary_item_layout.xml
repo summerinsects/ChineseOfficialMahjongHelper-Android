@@ -11,26 +11,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <TextView
+            android:id="@+id/rti_txt_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dp30"
-            android:baselineAligned="false"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/rti_txt_title"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp20"
-                android:textColor="@color/text_1"
-                android:textSize="@dimen/dp14" />
-
-            <TextView
-                android:id="@+id/rti_txt_time"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp20"
-                android:textColor="@color/text_3"
-                android:textSize="@dimen/dp14" />
-        </LinearLayout>
+            android:layout_height="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp65"
+            android:textColor="@color/text_1"
+            android:textSize="@dimen/dp14" />
+        <TextView
+            android:id="@+id/rti_txt_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp65"
+            android:layout_below="@+id/rti_txt_title"
+            android:textColor="@color/text_3"
+            android:textSize="@dimen/dp14" />
         <Button
             android:id="@+id/rti_btn_clear"
             android:layout_width="@dimen/dp60"

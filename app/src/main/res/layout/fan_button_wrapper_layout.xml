@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="SpUsage"
+    tools:ignore="SpUsage,ContentDescription"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
+    <ImageButton
+        android:id="@+id/fbw_btn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:id="@+id/fbw_btn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/btn_square_toggle" />
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:background="@drawable/btn_square_toggle" />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/fbw_txt"
         android:layout_width="match_parent"
