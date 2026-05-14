@@ -3,18 +3,15 @@ package net.tziakcha.chineseofficialmahjonghelper.rule;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -171,61 +168,32 @@ public class RuleFanListActivity extends AppCompatActivity {
     private static float sButtonGapF;
     private static float sButtonWidthF;
     private static float sButtonHeightF;
-    private static int sButtonGapI;
     private static int sButtonWidthI;
     private static int sButtonHeightI;
 
     private final class FanRecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mTitleText;
+        private final TextView mTitleText;
         private final View[] mWrappers = new View[13];
         private final TextView[] mFanTexts = new TextView[13];
         private int mIndex = -1;
 
         public FanRecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            init(itemView.getContext());
-        }
 
-        private void init(Context context) {
+            mTitleText = itemView.findViewById(R.id.fbi_txt);
+
+            Context context = itemView.getContext();
             if (sButtonWidthI == 0) {
                 DisplayMetrics metrics = context.getResources().getDisplayMetrics();
                 sButtonGapF = context.getResources().getDimension(R.dimen.dp5);
                 sButtonHeightF = context.getResources().getDimension(R.dimen.dp28);
                 sButtonWidthF = (metrics.widthPixels - 5 * sButtonGapF) * 0.25f;
-                sButtonGapI = (int)sButtonGapF;
                 sButtonWidthI = (int)sButtonWidthF;
                 sButtonHeightI = (int)sButtonHeightF;
             }
 
-            LinearLayout linearLayout = (LinearLayout)itemView;
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            final int dp16 = context.getResources().getDimensionPixelSize(R.dimen.dp16);
-
-            // 几番
-            TextView textView0 = new TextView(context);
-            LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            llp.leftMargin = (int)sButtonGapF;
-            llp.rightMargin = (int)sButtonGapF;
-            textView0.setLayoutParams(llp);
-            textView0.setGravity(Gravity.CENTER_VERTICAL);
-            textView0.setTextColor(ContextCompat.getColor(context, R.color.text_1));
-            textView0.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp16);
-            linearLayout.addView(textView0);
-            mTitleText = textView0;
-
-            // 下面所有按钮的根View
-            RelativeLayout root = new RelativeLayout(context);
-            LinearLayout.LayoutParams llp0 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            llp0.bottomMargin = sButtonGapI;
-            root.setLayoutParams(llp0);
-            linearLayout.addView(root);
-
+            RelativeLayout root = itemView.findViewById(R.id.fbi_rl);
             for (int i = 0; i < 13; ++i) {
                 View wrapper = View.inflate(context, R.layout.fan_button_wrapper_layout, null);
                 RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(sButtonWidthI, sButtonHeightI);
@@ -270,7 +238,9 @@ public class RuleFanListActivity extends AppCompatActivity {
         @NonNull
         @Override
         public FanRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new FanRecyclerViewHolder(new LinearLayout(parent.getContext()));
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fan_button_item_layout,
+                    parent, false);
+            return new FanRecyclerViewHolder(view);
         }
 
         @Override

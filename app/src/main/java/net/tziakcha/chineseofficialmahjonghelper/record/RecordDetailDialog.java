@@ -5,8 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -790,13 +787,13 @@ public class RecordDetailDialog extends AlertDialog {
     private static float sButtonGapF;
     private static float sButtonWidthF;
     private static float sButtonHeightF;
-    private static int sButtonGapI;
     private static int sButtonWidthI;
     private static int sButtonHeightI;
 
     private final class FanRecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mTitleText;
+        private final View mGapView;
+        private final TextView mTitleText;
         private final View[] mWrappers = new View[9];
         private final CheckBox[] mCheckBoxes = new CheckBox[9];
         private final TextView[] mFanTexts = new TextView[9];
@@ -804,43 +801,21 @@ public class RecordDetailDialog extends AlertDialog {
 
         FanRecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            init(itemView.getContext());
-        }
 
-        private void init(Context context) {
+            mGapView = itemView.findViewById(R.id.fti_gap);
+            mTitleText = itemView.findViewById(R.id.fti_txt);
+
+            Context context = itemView.getContext();
             if (sButtonWidthI == 0) {
                 DisplayMetrics metrics = context.getResources().getDisplayMetrics();
                 sButtonGapF = context.getResources().getDimension(R.dimen.dp5);
                 sButtonHeightF = context.getResources().getDimension(R.dimen.dp28);
                 sButtonWidthF = (metrics.widthPixels - 5 * sButtonGapF) * 0.25f;
-                sButtonGapI = (int)sButtonGapF;
                 sButtonWidthI = (int)sButtonWidthF;
                 sButtonHeightI = (int)sButtonHeightF;
             }
 
-            LinearLayout linearLayout = (LinearLayout)itemView;
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            final int dp16 = context.getResources().getDimensionPixelSize(R.dimen.dp16);
-
-            // 几番
-            TextView textView0 = new TextView(context);
-            textView0.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            textView0.setGravity(Gravity.CENTER_VERTICAL);
-            textView0.setTextColor(ContextCompat.getColor(context, R.color.text_1));
-            textView0.setTextSize(TypedValue.COMPLEX_UNIT_PX, dp16);
-            linearLayout.addView(textView0);
-            mTitleText = textView0;
-
-            // 下面所有按钮的根View
-            RelativeLayout root = new RelativeLayout(context);
-            root.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            linearLayout.addView(root);
-
+            RelativeLayout root = itemView.findViewById(R.id.fti_rl);
             for (int i = 0; i < 9; ++i) {
                 View wrapper = View.inflate(context, R.layout.fan_toggle_wrapper_layout, null);
                 RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(sButtonWidthI, sButtonHeightI);
@@ -861,9 +836,8 @@ public class RecordDetailDialog extends AlertDialog {
         public void setup(int idx, long major) {
             mIndex = idx;
 
+            mGapView.setVisibility(idx != 0 ? View.VISIBLE : View.GONE);
             mTitleText.setText(LIST_ITEM_TITLE[idx]);
-            ((LinearLayout.LayoutParams)mTitleText.getLayoutParams()).topMargin
-                    = idx != 0 ? sButtonGapI : 0;
 
             final int[] itemIndex = FAN_ITEM_INDEX[idx];
             final int cnt = itemIndex.length;  // 一共有这么多
@@ -909,7 +883,9 @@ public class RecordDetailDialog extends AlertDialog {
         @NonNull
         @Override
         public FanRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new FanRecyclerViewHolder(new LinearLayout(parent.getContext()));
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fan_toggle_item_layout,
+                    parent, false);
+            return new FanRecyclerViewHolder(view);
         }
 
         @Override
