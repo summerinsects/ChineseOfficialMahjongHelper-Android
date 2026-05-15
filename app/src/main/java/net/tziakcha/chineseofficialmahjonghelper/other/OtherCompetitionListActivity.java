@@ -328,7 +328,7 @@ public class OtherCompetitionListActivity extends AppCompatActivity {
                 long start_time = obj.has("start_time") ? obj.getLong("start_time") : 0;
                 long end_time = obj.has("end_time") ? obj.getLong("end_time") : 0;
                 int time_accuracy = obj.has("time_accuracy") ? obj.getInt("time_accuracy") : 0;
-                if (start_time > now) {
+                if ((end_time != 0 && end_time > now) || start_time > now) {
                     CompetitionInfo competition = new CompetitionInfo();
                     competition.name = obj.getString("name");
                     competition.location = obj.getString("location");
