@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import java.util.Random;
 
 public class RecordStartDialog extends AlertDialog {
     public interface OnSubmitListener {
-        boolean onSubmit(String[] names, String title, int mode);
+        boolean onSubmit(String[] names, String title, int mode, int heroIndex);
     }
 
     private final EditText[] mNameEdit = new EditText[4];
@@ -31,11 +32,14 @@ public class RecordStartDialog extends AlertDialog {
     private final String mTitle;
     private int mMode;
     private final boolean mMorePayment;
+    private final boolean mHeroMode;
     private final boolean mStarted;
     private final OnSubmitListener mOnSubmitListener;
+    private int mHeroIndex;
+    private final RadioButton[] mHeroRadios = new RadioButton[4];
 
     public RecordStartDialog(@NonNull Context context, String[] names, String title, int mode,
-            boolean morePayment, boolean started, OnSubmitListener listener) {
+            boolean morePayment, boolean heroMode, int heroIndex, boolean started, OnSubmitListener listener) {
         super(context);
         mNames = names;
         mTitle = title;
@@ -43,6 +47,8 @@ public class RecordStartDialog extends AlertDialog {
         mMorePayment = morePayment;
         mStarted = started;
         mOnSubmitListener = listener;
+        mHeroMode = heroMode;
+        mHeroIndex = heroIndex;
     }
 
     @Override
@@ -67,7 +73,8 @@ public class RecordStartDialog extends AlertDialog {
             for (int i = 0; i < 4; ++i) {
                 names[i] = mNameEdit[i].getText().toString();
             }
-            if (mOnSubmitListener.onSubmit(names, mTitleEdit.getText().toString(), mMode)) {
+            if (mOnSubmitListener.onSubmit(names, mTitleEdit.getText().toString(), mMode,
+                    mHeroRadios[0].isChecked() ? 0 : mHeroRadios[1].isChecked() ? 1 : mHeroRadios[2].isChecked() ? 2 : 3)) {
                 dismiss();
             }
         });
@@ -104,6 +111,28 @@ public class RecordStartDialog extends AlertDialog {
         contentView.findViewById(R.id.ril_ib_d0).setOnClickListener(view -> swapName(0, 1));
         contentView.findViewById(R.id.ril_ib_d1).setOnClickListener(view -> swapName(1, 2));
         contentView.findViewById(R.id.ril_ib_d2).setOnClickListener(view -> swapName(2, 3));
+
+        contentView.findViewById(R.id.ril_ll_hero).setVisibility(mHeroMode ? View.VISIBLE : View.GONE);
+        mHeroRadios[0] = contentView.findViewById(R.id.ril_rb_order0);
+        mHeroRadios[1] = contentView.findViewById(R.id.ril_rb_order1);
+        mHeroRadios[2] = contentView.findViewById(R.id.ril_rb_order2);
+        mHeroRadios[3] = contentView.findViewById(R.id.ril_rb_order3);
+        mHeroRadios[mHeroIndex].setChecked(true);
+
+        for (int i = 0; i < 4; ++i) {
+            final int idx = i;
+            mHeroRadios[i].setOnCheckedChangeListener((view, checked) -> {
+                if (checked) {
+                    mHeroIndex = idx;
+                    for (int k = 0; k < 4; ++k) {
+                        if (k != idx) {
+                            mHeroRadios[k].setChecked(false);
+                        }
+                    }
+                }
+            });
+        }
+
 
         contentView.findViewById(R.id.ril_ll_pay).setVisibility(mMorePayment ? View.VISIBLE : View.GONE);
 

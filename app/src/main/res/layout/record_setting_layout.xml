@@ -78,6 +78,7 @@
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/dp16"
                 android:text="本圈座位" />
+
             <RadioButton
                 android:id="@+id/rel_rb_order1"
                 android:layout_width="wrap_content"
@@ -94,6 +95,15 @@
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/dp16"
                 android:text="开局座位" />
+
+            <RadioButton
+                android:id="@+id/rel_rb_order3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="计分员模式"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16" />
         </RadioGroup>
 
         <include layout="@layout/dialog_footer2" />

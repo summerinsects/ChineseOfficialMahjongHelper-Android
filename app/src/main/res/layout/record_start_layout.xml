@@ -269,6 +269,59 @@
             android:text="输入的对局标题将显示在顶部导航栏上" />
 
         <LinearLayout
+            android:id="@+id/ril_ll_hero"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp10"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="记分员方位"
+                android:textColor="@color/text_1"
+                android:textSize="@dimen/dp12" />
+
+            <RadioButton
+                android:id="@+id/ril_rb_order0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="东起"
+                android:textSize="@dimen/dp12" />
+
+            <RadioButton
+                android:id="@+id/ril_rb_order1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="南起"
+                android:textSize="@dimen/dp12" />
+
+            <RadioButton
+                android:id="@+id/ril_rb_order2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="西起"
+                android:textSize="@dimen/dp12" />
+
+            <RadioButton
+                android:id="@+id/ril_rb_order3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="北起"
+                android:textSize="@dimen/dp12" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/ril_ll_pay"
             android:visibility="gone"
             android:layout_width="wrap_content"

@@ -38,6 +38,7 @@ public class RecordDetailDialog extends AlertDialog {
         void onSubmit(int period, RecordInfo.Detail detail);
     }
     private final int mSeatOrder;
+    private final int mHeroIndex;
     private final RecordInfo.Detail mDetail = new RecordInfo.Detail();
     private final boolean mModify;  // true=修改，false=新增
     private final int mMode;
@@ -63,11 +64,16 @@ public class RecordDetailDialog extends AlertDialog {
             {0, 1, 2, 3}, {1, 0, 3, 2}, {2, 3, 1, 0}, {3, 2, 0, 1}
     };
 
-    public RecordDetailDialog(@NonNull Context context, int order, int mode, int period,
-            String[] names, RecordInfo.Detail detail, OnSubmitListener listener) {
+    static private final int[][] HERO_SEAT_INDEX = {
+            {0, 1, 2, 3}, {1, 0, 3, 2}, {3, 2, 0, 1}, {2, 3, 1, 0}
+    };
+
+    public RecordDetailDialog(@NonNull Context context, int order, int heroIndex, int mode
+            , int period, String[] names, RecordInfo.Detail detail, OnSubmitListener listener) {
         super(context);
 
         mSeatOrder = order;
+        mHeroIndex = heroIndex;
         mModify = (detail != null);
         mMode = mode;
         mPeriod = period;
@@ -84,7 +90,7 @@ public class RecordDetailDialog extends AlertDialog {
         // 位置转换
         if (mSeatOrder != 2) {
             final int[] realSeatIndex = REAL_SEAT_INDEX[period >> 2];
-            final int offset = mSeatOrder == 0 ? 0 : period & 3;
+            final int offset = mSeatOrder == 0 ? 0 : mSeatOrder == 1 ? mPeriod & 3 : HERO_SEAT_INDEX[mPeriod >> 2][mHeroIndex];
             for (int i = 0; i < 4; ++i) {
                 int idx = realSeatIndex[(i + offset) & 3];
                 mNames[i] = names[idx];
@@ -130,7 +136,7 @@ public class RecordDetailDialog extends AlertDialog {
         // 位置转换
         if (mSeatOrder != 2) {
             final int[] realSeatIndex = REAL_SEAT_INDEX[mPeriod >> 2];
-            final int offset = mSeatOrder == 0 ? 0 : mPeriod & 3;
+            final int offset = mSeatOrder == 0 ? 0 : mSeatOrder == 1 ? mPeriod & 3 : HERO_SEAT_INDEX[mPeriod >> 2][mHeroIndex];
             detail.win_flag = 0;
             detail.claim_flag = 0;
             for (int i = 0; i < 4; ++i) {
@@ -211,7 +217,7 @@ public class RecordDetailDialog extends AlertDialog {
 
         TextView textView = contentView.findViewById(R.id.rdl_txt_order);
         textView.setText("选手按「"
-                + (mSeatOrder == 0 ? "本圈座位" : mSeatOrder == 1 ? "本盘座位" : "开局座位") + "」排列");
+                + (mSeatOrder == 0 ? "本圈座位" : mSeatOrder == 1 ? "本盘座位" : mSeatOrder == 2 ? "开局座位" : "固定记分员") + "」排列");
 
         textView = contentView.findViewById(R.id.rdl_txt_name0);
         textView.setText(mNames[0]);
