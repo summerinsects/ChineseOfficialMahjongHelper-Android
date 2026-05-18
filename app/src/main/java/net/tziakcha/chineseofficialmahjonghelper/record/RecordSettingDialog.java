@@ -23,7 +23,7 @@ public class RecordSettingDialog extends AlertDialog {
     private final int mMode;
     private final int mOrder;
     private final RadioButton[] mModeRadios = new RadioButton[2];
-    private final RadioButton[] mOrderRadios = new RadioButton[3];
+    private final RadioButton[] mOrderRadios = new RadioButton[4];
     private final OnSubmitListener mOnSubmitListener;
 
     public RecordSettingDialog(@NonNull Context context, int mode, int order, OnSubmitListener listener) {
@@ -52,7 +52,7 @@ public class RecordSettingDialog extends AlertDialog {
         button.setText("确定");
         button.setOnClickListener(view -> {
             mOnSubmitListener.onSubmit(mModeRadios[0].isChecked(),
-                    mOrderRadios[0].isChecked() ? 0 : mOrderRadios[1].isChecked() ? 1 : 2);
+                    mOrderRadios[0].isChecked() ? 0 : mOrderRadios[1].isChecked() ? 1 : mOrderRadios[2].isChecked() ? 2 : 3);
             dismiss();
         });
 
@@ -67,10 +67,12 @@ public class RecordSettingDialog extends AlertDialog {
         mOrderRadios[0] = contentView.findViewById(R.id.rel_rb_order0);
         mOrderRadios[1] = contentView.findViewById(R.id.rel_rb_order1);
         mOrderRadios[2] = contentView.findViewById(R.id.rel_rb_order2);
+        mOrderRadios[3] = contentView.findViewById(R.id.rel_rb_order3);
         mOrderRadios[mOrder].setChecked(true);
         Utils.adaptCompoundButton(mOrderRadios[0], dp25);
         Utils.adaptCompoundButton(mOrderRadios[1], dp25);
         Utils.adaptCompoundButton(mOrderRadios[2], dp25);
+        Utils.adaptCompoundButton(mOrderRadios[3], dp25);
 
         setContentView(contentView);
 

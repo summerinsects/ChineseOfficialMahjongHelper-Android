@@ -55,7 +55,8 @@ public class RecordSheetFragment extends Fragment {
     private TextView mTimeText;
     private RecordInfo mRecordInfo = sRecordInfo;
     private final int[] mTotalScores = new int[4];
-    private int mSeatOrder = 0;  // 座位转顺序：0=本圈，1=本盘，2=开局
+    private int mSeatOrder = 0;  // 座位转顺序：0=本圈，1=本盘，2=开局，3=记分员
+    private int mHeroIndex = 0;
     private boolean mSingleMode = true;
     private boolean mMorePayment = false;
     private boolean mIsActive = true;  // 当前是记录(true)还是查看(false)
@@ -561,10 +562,11 @@ public class RecordSheetFragment extends Fragment {
 
     private void editStartInfo() {
         new RecordStartDialog(requireContext(), sPrevName, sPrevTitle, mRecordInfo.mode,
-                mMorePayment, mRecordInfo.start_time != 0, this::onSubmitStartInfo).show();
+                mMorePayment, mSeatOrder == 3, mHeroIndex, mRecordInfo.start_time != 0,
+                this::onSubmitStartInfo).show();
     }
 
-    private boolean onSubmitStartInfo(String[] names, String title, int mode) {
+    private boolean onSubmitStartInfo(String[] names, String title, int mode, int heroIndex) {
         // 修改的限制更多
         Context context = requireContext();
         if (mRecordInfo.start_time != 0) {
@@ -604,6 +606,7 @@ public class RecordSheetFragment extends Fragment {
         mRecordInfo.title = title;
         mRecordInfo.mode = mMorePayment ? mode : RecordInfo.MODE_STANDARD;
         sPrevTitle = title;
+        mHeroIndex = heroIndex;
 
         if (mRecordInfo.period >= 16) {
             RecordHistoryFragment.saveRecord(requireContext(), mRecordInfo);
@@ -615,7 +618,7 @@ public class RecordSheetFragment extends Fragment {
     }
 
     private void onRecordButton(int period) {
-        new RecordDetailDialog(requireContext(), mSeatOrder, mRecordInfo.mode,
+        new RecordDetailDialog(requireContext(), mSeatOrder, mHeroIndex, mRecordInfo.mode,
                 period, mRecordInfo.names, null, this::onDetailSubmit).show();
     }
 
@@ -703,7 +706,7 @@ public class RecordSheetFragment extends Fragment {
     }
 
     private void modifyDetail(int period) {
-        new RecordDetailDialog(requireContext(), mSeatOrder, mRecordInfo.mode,
+        new RecordDetailDialog(requireContext(), mSeatOrder, mHeroIndex, mRecordInfo.mode,
                 period, mRecordInfo.names, mRecordInfo.details[period], this::onDetailSubmit).show();
     }
 
