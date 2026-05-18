@@ -16,6 +16,7 @@ public final class Common {
     public static String KEY_MORE_PAYMENT = "MorePayment";
     public static String KEY_SEAT_ORDER = "SeatOrder";
     public static String KEY_TOTAL_MODE = "TotalMode";
+    public static String KEY_HERO_INDEX = "HeroIndex";
     public static String KEY_RECENT_FANS = "RecentFans";
     public static String KEY_NO_HINT_MINOR = "NoHintMinor";
 }

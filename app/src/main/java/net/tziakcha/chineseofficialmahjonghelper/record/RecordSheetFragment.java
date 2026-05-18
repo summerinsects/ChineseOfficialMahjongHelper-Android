@@ -347,6 +347,7 @@ public class RecordSheetFragment extends Fragment {
         mSeatOrder = sharedPreferences.getInt(Common.KEY_SEAT_ORDER, 0);
         mSingleMode = !sharedPreferences.getBoolean(Common.KEY_TOTAL_MODE, false);
         mMorePayment = sharedPreferences.getBoolean(Common.KEY_MORE_PAYMENT, false);
+        mHeroIndex = sharedPreferences.getInt(Common.KEY_HERO_INDEX, 0);
 
         if (mIsActive) {
             String str = Utils.getStringFromFile(context, sFilePath, sFileName);
@@ -614,7 +615,13 @@ public class RecordSheetFragment extends Fragment {
         mRecordInfo.title = title;
         mRecordInfo.mode = mMorePayment ? mode : RecordInfo.MODE_STANDARD;
         sPrevTitle = title;
-        mHeroIndex = heroIndex;
+        if (mHeroIndex != heroIndex) {
+            mHeroIndex = heroIndex;
+            requireContext().getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt(Common.KEY_HERO_INDEX, heroIndex)
+                    .apply();
+        }
 
         if (mRecordInfo.period >= 16) {
             RecordHistoryFragment.saveRecord(requireContext(), mRecordInfo);

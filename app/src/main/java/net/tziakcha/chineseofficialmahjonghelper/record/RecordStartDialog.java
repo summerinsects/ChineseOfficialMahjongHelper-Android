@@ -2,6 +2,8 @@ package net.tziakcha.chineseofficialmahjonghelper.record;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,9 +11,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +40,6 @@ public class RecordStartDialog extends AlertDialog {
     private final boolean mStarted;
     private final OnSubmitListener mOnSubmitListener;
     private int mHeroIndex;
-    private final RadioButton[] mHeroRadios = new RadioButton[4];
 
     public RecordStartDialog(@NonNull Context context, String[] names, String title, int mode,
             boolean morePayment, boolean heroMode, int heroIndex, boolean started, OnSubmitListener listener) {
@@ -73,8 +76,7 @@ public class RecordStartDialog extends AlertDialog {
             for (int i = 0; i < 4; ++i) {
                 names[i] = mNameEdit[i].getText().toString();
             }
-            if (mOnSubmitListener.onSubmit(names, mTitleEdit.getText().toString(), mMode,
-                    mHeroRadios[0].isChecked() ? 0 : mHeroRadios[1].isChecked() ? 1 : mHeroRadios[2].isChecked() ? 2 : 3)) {
+            if (mOnSubmitListener.onSubmit(names, mTitleEdit.getText().toString(), mMode, mHeroIndex)) {
                 dismiss();
             }
         });
@@ -113,26 +115,25 @@ public class RecordStartDialog extends AlertDialog {
         contentView.findViewById(R.id.ril_ib_d2).setOnClickListener(view -> swapName(2, 3));
 
         contentView.findViewById(R.id.ril_ll_hero).setVisibility(mHeroMode ? View.VISIBLE : View.GONE);
-        mHeroRadios[0] = contentView.findViewById(R.id.ril_rb_order0);
-        mHeroRadios[1] = contentView.findViewById(R.id.ril_rb_order1);
-        mHeroRadios[2] = contentView.findViewById(R.id.ril_rb_order2);
-        mHeroRadios[3] = contentView.findViewById(R.id.ril_rb_order3);
-        mHeroRadios[mHeroIndex].setChecked(true);
 
-        for (int i = 0; i < 4; ++i) {
-            final int idx = i;
-            mHeroRadios[i].setOnCheckedChangeListener((view, checked) -> {
-                if (checked) {
-                    mHeroIndex = idx;
-                    for (int k = 0; k < 4; ++k) {
-                        if (k != idx) {
-                            mHeroRadios[k].setChecked(false);
-                        }
-                    }
-                }
-            });
-        }
+        Spinner spinner = contentView.findViewById(R.id.ril_spn);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context,
+                R.layout.record_hero_spinner_item,
+                new String[]{"东起", "南起", "西起", "北起"});
+        spinner.setAdapter(adapter);
+        spinner.setPopupBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        spinner.setSelection(mHeroIndex);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mHeroIndex = position;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         contentView.findViewById(R.id.ril_ll_pay).setVisibility(mMorePayment ? View.VISIBLE : View.GONE);
 

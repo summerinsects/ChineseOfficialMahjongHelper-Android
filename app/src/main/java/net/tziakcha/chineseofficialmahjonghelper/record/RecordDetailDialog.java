@@ -216,8 +216,20 @@ public class RecordDetailDialog extends AlertDialog {
         Utils.adaptCompoundButton(mTimeoutCheck, dp28);
 
         TextView textView = contentView.findViewById(R.id.rdl_txt_order);
-        textView.setText("选手按「"
-                + (mSeatOrder == 0 ? "本圈座位" : mSeatOrder == 1 ? "本盘座位" : mSeatOrder == 2 ? "开局座位" : "固定记分员") + "」排列");
+        switch (mSeatOrder) {
+            case 0:
+                textView.setText("选手按「本圈座位」排列");
+                break;
+            case 1:
+                textView.setText("选手按「本盘座位」排列");
+                break;
+            case 2:
+                textView.setText("选手按「开局座位」排列");
+                break;
+            case 3:
+                textView.setText("选手按「固定记分员・" + Mahjong.WIND_TEXT[mHeroIndex] + "起」排列");
+                break;
+        }
 
         textView = contentView.findViewById(R.id.rdl_txt_name0);
         textView.setText(mNames[0]);
