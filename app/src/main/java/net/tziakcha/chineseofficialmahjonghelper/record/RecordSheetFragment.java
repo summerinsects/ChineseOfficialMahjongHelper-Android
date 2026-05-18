@@ -486,6 +486,13 @@ public class RecordSheetFragment extends Fragment {
             boolean prevMode = mSingleMode;
             mSingleMode = mode;
             mSeatOrder = order;
+
+            requireContext().getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putInt("SeatOrder", mSeatOrder)
+                    .putBoolean("TotalMode", !mSingleMode)
+                    .apply();
+
             if (prevMode != mSingleMode && mRecordInfo.start_time != 0) {
                 refreshScores();
             }
