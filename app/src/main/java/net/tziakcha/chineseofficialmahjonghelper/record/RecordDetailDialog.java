@@ -390,7 +390,7 @@ public class RecordDetailDialog extends AlertDialog {
             }
         } else {  // 未标记番种
             if (mWinIndex != -1 && !getContext().getSharedPreferences(Common.SHARED_PREF_NAME,
-                    Context.MODE_PRIVATE).getBoolean("NoHintMinor", false)) {
+                    Context.MODE_PRIVATE).getBoolean(Common.KEY_NO_HINT_MINOR, false)) {
                 showMinorFanDialog(true);
                 return;
             }
@@ -942,7 +942,7 @@ public class RecordDetailDialog extends AlertDialog {
     private void loadRecentFans() {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(
                 Common.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        String str = sharedPreferences.getString("RecentFans", "");
+        String str = sharedPreferences.getString(Common.KEY_RECENT_FANS, "");
         String[] res = str.split("\\|");
         if (res.length == 8) {
             for (int i = 0; i < 8; ++i) {
@@ -961,7 +961,7 @@ public class RecordDetailDialog extends AlertDialog {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences(
                 Common.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        sharedPreferences.edit().putString("RecentFans", str.toString()).apply();
+        sharedPreferences.edit().putString(Common.KEY_RECENT_FANS, str.toString()).apply();
     }
 
 }

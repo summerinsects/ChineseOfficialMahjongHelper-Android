@@ -78,7 +78,7 @@ public class RecordHistoryFragment extends Fragment {
         mEmptyText.setText("无历史记录");
 
         mMorePayment = context.getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
-                .getBoolean("MorePayment", false);
+                .getBoolean(Common.KEY_MORE_PAYMENT, false);
 
         if (sHasLoaded) {
             dataChanged();

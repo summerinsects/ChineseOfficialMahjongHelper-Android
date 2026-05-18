@@ -47,7 +47,7 @@ public class RecordChase2Dialog extends AlertDialog {
 
         TextView textView = contentView.findViewById(R.id.rc2l_txt_mode);
         if (context.getSharedPreferences(Common.SHARED_PREF_NAME, Context.MODE_PRIVATE)
-                .getBoolean("MorePayment", false) || mMode != RecordInfo.MODE_STANDARD) {
+                .getBoolean(Common.KEY_MORE_PAYMENT, false) || mMode != RecordInfo.MODE_STANDARD) {
             textView.setText("当前授受制：" + RecordInfo.MODE_NAME_TEXT[mMode]);
             textView.setVisibility(View.VISIBLE);
         } else {

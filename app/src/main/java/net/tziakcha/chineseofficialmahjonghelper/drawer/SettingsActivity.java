@@ -32,11 +32,11 @@ public class SettingsActivity extends AppCompatActivity {
         contentView.findViewById(R.id.ab_r_btn).setVisibility(View.GONE);
 
         associateCell(contentView.findViewById(R.id.sl_record_cb_fold),
-                "FoldSheetButton",
+                Common.KEY_FOLD_SHEET_BUTTON,
                 contentView.findViewById(R.id.sl_record_rl_fold));
 
         associateCell(contentView.findViewById(R.id.sl_record_cb_pay),
-                "MorePayment",
+                Common.KEY_MORE_PAYMENT,
                 contentView.findViewById(R.id.sl_record_rl_pay));
 
         contentView.findViewById(R.id.sl_train_txt_discard).setOnClickListener(view -> resetTrainDiscard());

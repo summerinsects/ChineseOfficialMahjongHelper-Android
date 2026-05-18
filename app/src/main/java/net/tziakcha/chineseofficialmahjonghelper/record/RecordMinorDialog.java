@@ -67,7 +67,7 @@ public class RecordMinorDialog extends AlertDialog {
         button.setOnClickListener(view -> {
             SharedPreferences sharedPreferences = getContext().getSharedPreferences(
                     Common.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-            sharedPreferences.edit().putBoolean("NoHintMinor", mNoHintCheck.isChecked()).apply();
+            sharedPreferences.edit().putBoolean(Common.KEY_NO_HINT_MINOR, mNoHintCheck.isChecked()).apply();
 
             int minor2 = 0;
             for (int i = 0; i < 10; ++i) {
@@ -85,7 +85,7 @@ public class RecordMinorDialog extends AlertDialog {
 
         mNoHintCheck = contentView.findViewById(R.id.rml_cb_hint);
         mNoHintCheck.setChecked(context.getSharedPreferences(Common.SHARED_PREF_NAME,
-                Context.MODE_PRIVATE).getBoolean("NoHintMinor", false));
+                Context.MODE_PRIVATE).getBoolean(Common.KEY_NO_HINT_MINOR, false));
         Utils.adaptCompoundButton(mNoHintCheck, getContext().getResources().getDimensionPixelSize(R.dimen.dp25));
 
         final int[] fan2Ids = {

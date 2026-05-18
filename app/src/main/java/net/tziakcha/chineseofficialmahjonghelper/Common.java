@@ -12,4 +12,10 @@ public final class Common {
     public static int COLOR_PURPLE = Color.rgb(182, 118, 226);
 
     public static String SHARED_PREF_NAME = "COM_Config";
+    public static String KEY_FOLD_SHEET_BUTTON = "FoldSheetButton";
+    public static String KEY_MORE_PAYMENT = "MorePayment";
+    public static String KEY_SEAT_ORDER = "SeatOrder";
+    public static String KEY_TOTAL_MODE = "TotalMode";
+    public static String KEY_RECENT_FANS = "RecentFans";
+    public static String KEY_NO_HINT_MINOR = "NoHintMinor";
 }
