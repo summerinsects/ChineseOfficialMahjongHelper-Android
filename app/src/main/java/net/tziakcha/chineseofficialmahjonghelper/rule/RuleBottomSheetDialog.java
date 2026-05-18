@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,8 +52,6 @@ public class RuleBottomSheetDialog extends BottomSheetDialogFragment {
         if (dialog != null) {
             Window window = dialog.getWindow();
             if (window != null) {
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
-                        getResources().getDisplayMetrics().heightPixels * 7 / 10);
                 window.setGravity(Gravity.BOTTOM);
             }
         }

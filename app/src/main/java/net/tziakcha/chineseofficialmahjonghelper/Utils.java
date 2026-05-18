@@ -1,5 +1,6 @@
 package net.tziakcha.chineseofficialmahjonghelper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
@@ -29,6 +30,16 @@ public final class Utils {
         if (BuildConfig.DEBUG) {
             e.printStackTrace();
         }
+    }
+
+    public static int getStatusBarHeight(Context context) {
+        @SuppressLint({"DiscouragedApi", "InternalInsetResource"})
+        final int id = context.getResources().getIdentifier(
+                "status_bar_height", "dimen", "android");
+        if (id > 0) {
+            return context.getResources().getDimensionPixelSize(id);
+        }
+        return 0;
     }
 
     public static String copyAssetToInternalStorage(Context context, String assetPath) {

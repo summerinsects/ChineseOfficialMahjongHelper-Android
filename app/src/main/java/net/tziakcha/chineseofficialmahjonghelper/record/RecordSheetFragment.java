@@ -112,8 +112,9 @@ public class RecordSheetFragment extends Fragment {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         final int colWidth = metrics.widthPixels / 6;
 
-        // 状态栏22+标题38+时间12=72，留点空隙取80
-        final int siblingHeight = getResources().getDimensionPixelSize(R.dimen.dp80);
+        // 标题38+时间12=50
+        final int siblingHeight = getResources().getDimensionPixelSize(R.dimen.dp50)
+                + Utils.getStatusBarHeight(context);
         final int maxSheetHeight = metrics.heightPixels - siblingHeight;
 
         // 选手姓名+开局座位+每圈座位+累计+名次+标准分 16+6=22
