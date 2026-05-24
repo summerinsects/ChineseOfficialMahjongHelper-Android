@@ -101,9 +101,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="计分员模式"
                 android:textColor="@color/text_3"
-                android:textSize="@dimen/dp16" />
+                android:textSize="@dimen/dp16"
+                android:text="计分员模式" />
         </RadioGroup>
 
         <include layout="@layout/dialog_footer2" />
