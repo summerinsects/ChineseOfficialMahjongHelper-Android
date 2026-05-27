@@ -55,7 +55,7 @@ public class RecordSheetFragment extends Fragment {
     private TextView mTimeText;
     private RecordInfo mRecordInfo = sRecordInfo;
     private final int[] mTotalScores = new int[4];
-    private int mSeatOrder = 0;  // 座位转顺序：0=本圈，1=本盘，2=开局，3=记分员
+    private int mSeatOrder = 0;  // 座位转顺序：0=本圈，1=本盘，2=开局，3=计分员
     private int mHeroIndex = 0;
     private boolean mSingleMode = true;
     private boolean mMorePayment = false;

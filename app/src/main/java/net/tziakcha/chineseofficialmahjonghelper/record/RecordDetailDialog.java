@@ -228,7 +228,7 @@ public class RecordDetailDialog extends AlertDialog {
                 textView.setText("选手按「开局座位」排列");
                 break;
             case 3:
-                textView.setText("选手按「固定记分员・" + Mahjong.WIND_TEXT[mHeroIndex] + "起」排列");
+                textView.setText("选手按「固定计分员・" + Mahjong.WIND_TEXT[mHeroIndex] + "起」排列");
                 break;
         }
 
@@ -241,8 +241,7 @@ public class RecordDetailDialog extends AlertDialog {
             panelTop[1] = contentView.findViewById(R.id.rdl_ll_alt_player1);
             panelTop[2] = contentView.findViewById(R.id.rdl_ll_alt_player2);
             panelTop[3] = contentView.findViewById(R.id.rdl_ll_alt_player3);
-        }
-        else {
+        } else {
             panelTop[0] = contentView.findViewById(R.id.rdl_ll_player0);
             panelTop[1] = contentView.findViewById(R.id.rdl_ll_player1);
             panelTop[2] = contentView.findViewById(R.id.rdl_ll_player2);
@@ -266,8 +265,7 @@ public class RecordDetailDialog extends AlertDialog {
         }
         if (mSeatOrder == 3) {
             contentView.findViewById(R.id.rdl_ib_center).setOnClickListener(view -> showPenaltyDialog());
-        }
-        else {
+        } else {
             for (int i = 0; i < 4; ++i) {
                 panelTop[i].findViewById(R.id.ib_pen).setOnClickListener(view -> showPenaltyDialog());
             }
@@ -569,8 +567,7 @@ public class RecordDetailDialog extends AlertDialog {
         for (int i = 0; i < 4; ++i) {
             if (mSeatOrder == 3 && mDetail.penalty[i] != 0) {
                 mScoreTexts[i].setText(String.format("%+d(%+d)", scores[i], mDetail.penalty[i]));
-            }
-            else {
+            } else {
                 mScoreTexts[i].setText(String.format("%+d", scores[i]));
             }
         }
