@@ -413,7 +413,7 @@
                     android:background="@drawable/btn_square"
                     android:textColor="#fff"
                     android:textSize="@dimen/dp14"
-                    android:text="5" />
+                    android:text="+5" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="0dp"
