@@ -4,6 +4,7 @@
     tools:ignore="SpUsage,HardcodedText"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:baselineAligned="false"
     android:orientation="vertical">
 
@@ -11,8 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff">
+        android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rul_rv"
             android:layout_width="match_parent"
