@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -228,49 +227,50 @@ public class RecordDetailDialog extends AlertDialog {
                 textView.setText("选手按「开局座位」排列");
                 break;
             case 3:
-                textView.setText("选手按「固定计分员・" + Mahjong.WIND_TEXT[mHeroIndex] + "起」排列");
+                textView.setText("选手按「固定选手・" + Mahjong.WIND_TEXT[mHeroIndex] + "起视角」排列");
                 break;
         }
 
-        LinearLayout[] panelTop = new LinearLayout[4];
-        mFoldableView = (mSeatOrder == 3) ? contentView.findViewById(R.id.rdl_cl_scoreboard) :
-                contentView.findViewById(R.id.rdl_ll_scoreboard);
-        mFoldableView.setVisibility(View.VISIBLE);
-        if (mSeatOrder == 3) {
-            panelTop[0] = contentView.findViewById(R.id.rdl_ll_alt_player0);
-            panelTop[1] = contentView.findViewById(R.id.rdl_ll_alt_player1);
-            panelTop[2] = contentView.findViewById(R.id.rdl_ll_alt_player2);
-            panelTop[3] = contentView.findViewById(R.id.rdl_ll_alt_player3);
-        } else {
-            panelTop[0] = contentView.findViewById(R.id.rdl_ll_player0);
-            panelTop[1] = contentView.findViewById(R.id.rdl_ll_player1);
-            panelTop[2] = contentView.findViewById(R.id.rdl_ll_player2);
-            panelTop[3] = contentView.findViewById(R.id.rdl_ll_player3);
-        }
+        textView = contentView.findViewById(R.id.rdl_txt_name0);
+        textView.setText(mNames[0]);
+        textView = contentView.findViewById(R.id.rdl_txt_name1);
+        textView.setText(mNames[1]);
+        textView = contentView.findViewById(R.id.rdl_txt_name2);
+        textView.setText(mNames[2]);
+        textView = contentView.findViewById(R.id.rdl_txt_name3);
+        textView.setText(mNames[3]);
 
-        for (int i = 0; i < 4; ++i) {
-            textView = panelTop[i].findViewById(R.id.txt_name);
-            textView.setText(mNames[i]);
-            mScoreTexts[i] = panelTop[i].findViewById(R.id.txt_score);
-            mWinRadios[i] = panelTop[i].findViewById(R.id.rb_win);
-            mClaimRadios[i] = panelTop[i].findViewById(R.id.rb_clm);
-            if (mSeatOrder != 3) {
-                mPenaltyTexts[i] = panelTop[i].findViewById(R.id.txt_pen);
-            }
-        }
+        mScoreTexts[0] = contentView.findViewById(R.id.rdl_txt_score0);
+        mScoreTexts[1] = contentView.findViewById(R.id.rdl_txt_score1);
+        mScoreTexts[2] = contentView.findViewById(R.id.rdl_txt_score2);
+        mScoreTexts[3] = contentView.findViewById(R.id.rdl_txt_score3);
+
+        mWinRadios[0] = contentView.findViewById(R.id.rdl_rb_win0);
+        mWinRadios[1] = contentView.findViewById(R.id.rdl_rb_win1);
+        mWinRadios[2] = contentView.findViewById(R.id.rdl_rb_win2);
+        mWinRadios[3] = contentView.findViewById(R.id.rdl_rb_win3);
+
+        mClaimRadios[0] = contentView.findViewById(R.id.rdl_rb_clm0);
+        mClaimRadios[1] = contentView.findViewById(R.id.rdl_rb_clm1);
+        mClaimRadios[2] = contentView.findViewById(R.id.rdl_rb_clm2);
+        mClaimRadios[3] = contentView.findViewById(R.id.rdl_rb_clm3);
 
         for (int i = 0; i < 4; ++i) {
             Utils.adaptCompoundButton(mWinRadios[i], dp28);
             Utils.adaptCompoundButton(mClaimRadios[i], dp28);
         }
-        if (mSeatOrder == 3) {
-            contentView.findViewById(R.id.rdl_ib_center).setOnClickListener(view -> showPenaltyDialog());
-        } else {
-            for (int i = 0; i < 4; ++i) {
-                panelTop[i].findViewById(R.id.ib_pen).setOnClickListener(view -> showPenaltyDialog());
-            }
-        }
 
+        contentView.findViewById(R.id.rdl_ib_pen0).setOnClickListener(view -> showPenaltyDialog());
+        contentView.findViewById(R.id.rdl_ib_pen1).setOnClickListener(view -> showPenaltyDialog());
+        contentView.findViewById(R.id.rdl_ib_pen2).setOnClickListener(view -> showPenaltyDialog());
+        contentView.findViewById(R.id.rdl_ib_pen3).setOnClickListener(view -> showPenaltyDialog());
+
+        mPenaltyTexts[0] = contentView.findViewById(R.id.rdl_txt_pen0);
+        mPenaltyTexts[1] = contentView.findViewById(R.id.rdl_txt_pen1);
+        mPenaltyTexts[2] = contentView.findViewById(R.id.rdl_txt_pen2);
+        mPenaltyTexts[3] = contentView.findViewById(R.id.rdl_txt_pen3);
+
+        mFoldableView = contentView.findViewById(R.id.rdl_ll_foldable);
         contentView.findViewById(R.id.rdl_btn_exp).setOnClickListener(view -> onExpandButton((Button)view));
 
         mFanRecyclerView = contentView.findViewById(R.id.rdl_rv_fan);
@@ -565,11 +565,7 @@ public class RecordDetailDialog extends AlertDialog {
                 mDetail.win_flag, mDetail.claim_flag, mDetail.penalty);
 
         for (int i = 0; i < 4; ++i) {
-            if (mSeatOrder == 3 && mDetail.penalty[i] != 0) {
-                mScoreTexts[i].setText(String.format("%+d(%+d)", scores[i], mDetail.penalty[i]));
-            } else {
-                mScoreTexts[i].setText(String.format("%+d", scores[i]));
-            }
+            mScoreTexts[i].setText(String.format("%+d", scores[i]));
         }
 
         // 使用不同颜色
@@ -586,10 +582,8 @@ public class RecordDetailDialog extends AlertDialog {
     }
 
     private void refreshPenalty() {
-        if (mSeatOrder != 3) {
-            for (int i = 0; i < 4; ++i) {
-                RecordPenaltyDialog.setPenaltyTextValue(mPenaltyTexts[i], mDetail.penalty[i]);
-            }
+        for (int i = 0; i < 4; ++i) {
+            RecordPenaltyDialog.setPenaltyTextValue(mPenaltyTexts[i], mDetail.penalty[i]);
         }
     }
 

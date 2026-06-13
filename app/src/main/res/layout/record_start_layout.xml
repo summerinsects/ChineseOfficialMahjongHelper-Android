@@ -283,7 +283,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:singleLine="true"
-                android:text="计分员方位"
+                android:text="主视角选择"
                 android:textColor="@color/text_1"
                 android:textSize="@dimen/dp14" />
 

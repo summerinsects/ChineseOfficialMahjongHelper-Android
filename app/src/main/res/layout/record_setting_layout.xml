@@ -103,7 +103,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/text_3"
                 android:textSize="@dimen/dp16"
-                android:text="计分员模式" />
+                android:text="固定选手" />
         </RadioGroup>
 
         <include layout="@layout/dialog_footer2" />

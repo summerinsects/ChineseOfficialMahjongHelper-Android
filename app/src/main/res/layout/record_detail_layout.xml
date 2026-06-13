@@ -132,187 +132,393 @@
                 android:text="超时" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/rdl_cl_scoreboard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp5"
-            android:layout_marginTop="@dimen/dp5"
-            android:layout_marginBottom="@dimen/dp5"
-            android:visibility="gone">
-
-            <!-- 左列分界线：30%, 35% 位置 -->
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/rdl_guideline_left1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.3" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/rdl_guideline_left2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.35" />
-
-            <!-- 右列分界线：65%, 70% 位置 -->
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/rdl_guideline_right1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.65" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/rdl_guideline_right2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.7" />
-
-            <!-- 水平中线：50% 位置 -->
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/rdl_guideline_horizontal_center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <!-- 主视角 -->
-            <LinearLayout
-                android:id="@+id/rdl_ll_alt_player0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp20"
-                android:layout_marginEnd="@dimen/dp5"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="@id/rdl_guideline_right1"
-                app:layout_constraintStart_toStartOf="@id/rdl_guideline_left2"
-                app:layout_constraintTop_toBottomOf="@id/rdl_guideline_horizontal_center"
-                android:background="@drawable/square_empty">
-
-                <include layout="@layout/panel_player2" />
-            </LinearLayout>
-
-            <!-- 下家 -->
-            <LinearLayout
-                android:id="@+id/rdl_ll_alt_player1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dp5"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/rdl_guideline_right2"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/square_empty">
-
-                <include layout="@layout/panel_player2" />
-            </LinearLayout>
-
-            <!-- 对家 -->
-            <LinearLayout
-                android:id="@+id/rdl_ll_alt_player2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/rdl_guideline_horizontal_center"
-                app:layout_constraintStart_toStartOf="@id/rdl_guideline_left2"
-                app:layout_constraintEnd_toEndOf="@id/rdl_guideline_right1"
-                android:layout_marginBottom="@dimen/dp20"
-                android:layout_marginEnd="@dimen/dp5"
-                android:orientation="vertical"
-                android:background="@drawable/square_empty">
-
-                <include layout="@layout/panel_player2" />
-            </LinearLayout>
-
-            <!-- 上家 -->
-            <LinearLayout
-                android:id="@+id/rdl_ll_alt_player3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dp5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/rdl_guideline_left1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:orientation="vertical"
-                android:background="@drawable/square_empty">
-                <include layout="@layout/panel_player2" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/dp5"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/rdl_guideline_left2"
-                app:layout_constraintEnd_toEndOf="@id/rdl_guideline_right1"
-                app:layout_constraintTop_toTopOf="parent" >
-
-                <ImageButton
-                    android:id="@+id/rdl_ib_center"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp28"
-                    android:background="@drawable/btn_square_empty" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp28"
-                    android:layout_marginEnd="@dimen/dp5"
-                    android:gravity="center"
-                    android:layout_centerInParent="true"
-                    android:text="判罚"
-                    android:textColor="@color/text_2"
-                    android:textSize="@dimen/dp16" />
-            </RelativeLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <LinearLayout
-            android:id="@+id/rdl_ll_scoreboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:layout_marginStart="@dimen/dp5"
-            android:visibility="gone">
+            android:layout_marginStart="@dimen/dp5">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_name0"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#ff7f00"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_name1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#ff7f00"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_name2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#ff7f00"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_name3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#ff7f00"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/dp6"
+                app:autoSizeMaxTextSize="@dimen/dp16"
+                app:autoSizeStepGranularity="2px" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/dp5">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_score0"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="+0" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_score1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="+0" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_score2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="+0" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/rdl_txt_score3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp28"
+                android:layout_marginEnd="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/text_3"
+                android:textSize="@dimen/dp16"
+                android:text="+0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rdl_ll_foldable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/rdl_ll_player0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <include layout="@layout/panel_player" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_marginStart="@dimen/dp5">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_win0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="和牌" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_win1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="和牌" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_win2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="和牌" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_win3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="和牌" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_marginStart="@dimen/dp5">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_clm0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="点炮" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_clm1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="点炮" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_clm2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="点炮" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <RadioButton
+                        android:id="@+id/rdl_rb_clm3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/dp16"
+                        android:text="点炮" />
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rdl_ll_player1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <include layout="@layout/panel_player" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_marginStart="@dimen/dp5">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/rdl_ib_pen0"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_square_empty" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:layout_marginEnd="@dimen/dp5"
+                            android:gravity="center"
+                            android:textColor="@color/text_2"
+                            android:textSize="@dimen/dp16"
+                            android:text="判罚" />
+                        <TextView
+                            android:id="@+id/rdl_txt_pen0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:gravity="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dp16"
+                            android:text="+0" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/rdl_ib_pen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_square_empty" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:layout_marginEnd="@dimen/dp5"
+                            android:gravity="center"
+                            android:textColor="@color/text_2"
+                            android:textSize="@dimen/dp16"
+                            android:text="判罚" />
+                        <TextView
+                            android:id="@+id/rdl_txt_pen1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:gravity="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dp16"
+                            android:text="+0" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/rdl_ib_pen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_square_empty" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:layout_marginEnd="@dimen/dp5"
+                            android:gravity="center"
+                            android:textColor="@color/text_2"
+                            android:textSize="@dimen/dp16"
+                            android:text="判罚" />
+                        <TextView
+                            android:id="@+id/rdl_txt_pen2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:gravity="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dp16"
+                            android:text="+0" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp5"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/rdl_ib_pen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp28"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/btn_square_empty" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:layout_marginEnd="@dimen/dp5"
+                            android:gravity="center"
+                            android:textColor="@color/text_2"
+                            android:textSize="@dimen/dp16"
+                            android:text="判罚" />
+                        <TextView
+                            android:id="@+id/rdl_txt_pen3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dp28"
+                            android:gravity="center"
+                            android:textColor="@color/text_3"
+                            android:textSize="@dimen/dp16"
+                            android:text="+0" />
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rdl_ll_player2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <include layout="@layout/panel_player" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rdl_ll_player3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <include layout="@layout/panel_player" />
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
