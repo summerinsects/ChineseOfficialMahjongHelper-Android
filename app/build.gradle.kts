@@ -10,8 +10,8 @@ android {
         applicationId = "net.tziakcha.chineseofficialmahjonghelper"
         minSdk = 24
         targetSdk = 34
-        versionCode = 6
-        versionName = "2.0.5"
+        versionCode = 7
+        versionName = "2.0.6"
 
         externalNativeBuild {
             cmake {
