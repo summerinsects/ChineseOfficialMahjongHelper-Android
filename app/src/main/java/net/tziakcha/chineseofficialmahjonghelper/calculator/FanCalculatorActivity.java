@@ -437,6 +437,7 @@ public class FanCalculatorActivity extends AppCompatActivity {
             return false;
         }
 
+        mFanAreaView.removeAllViews();
         mTilePickerLayout.setData(handTiles.fp, handTiles.st, handTiles.wt);
         return true;
     }
